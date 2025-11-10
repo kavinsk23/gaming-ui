@@ -4,40 +4,148 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#0f0f23" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Gaming UI Component Library - Premium React components for game developers"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    
+    <!-- Preload gaming fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Gaming style manifest -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    
+    <!-- Open Graph tags for gaming community -->
+    <meta property="og:title" content="Gaming UI - React Component Library" />
+    <meta property="og:description" content="Build stunning game interfaces with our premium React components designed specifically for gaming applications." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/gaming-preview.png" />
+    
+    <title>Gaming UI | React Component Library for Game Developers</title>
+    
+    <style>
+      /* Fallback styles in case CSS doesn't load immediately */
+      body {
+        margin: 0;
+        background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        font-family: 'Rajdhani', sans-serif;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      .loading-fallback {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        flex-direction: column;
+        background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+      }
+      
+      .loading-glow {
+        font-family: 'Orbitron', monospace;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #00ff88;
+        text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+        animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <noscript>
+      <div style="
+        background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+        font-family: 'Rajdhani', sans-serif;
+      ">
+        <div style="
+          background: rgba(0, 255, 136, 0.1);
+          border: 2px solid #00ff88;
+          border-radius: 12px;
+          padding: 2rem;
+          max-width: 500px;
+        ">
+          <h1 style="
+            font-family: 'Orbitron', monospace;
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+          ">🚀 Gaming UI Library</h1>
+          <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+            JavaScript is required to experience our interactive gaming components.
+          </p>
+          <p style="color: #8892b0;">
+            Please enable JavaScript to explore our collection of premium React components 
+            designed specifically for gaming applications and interactive experiences.
+          </p>
+        </div>
+      </div>
+    </noscript>
+    
+    <div id="root">
+      <!-- Fallback loading screen -->
+      <div class="loading-fallback">
+        <div class="loading-glow">GAMING UI</div>
+        <div style="
+          margin-top: 2rem;
+          width: 60px;
+          height: 60px;
+          border: 3px solid #00ff88;
+          border-top: 3px solid transparent;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        "></div>
+        <p style="margin-top: 1rem; color: #8892b0; font-size: 1.1rem;">
+          Loading Gaming Components...
+        </p>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+
     <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
+      Gaming UI Component Library
+      Built for React gaming applications with Tailwind CSS
+      
+      Features:
+      - Game HUD Components
+      - Character Stats Displays
+      - Inventory Systems
+      - Skill Trees
+      - Quest Logs
+      - Mini-maps
+      - Health & Mana Bars
+      - XP Progress Trackers
+      - And much more!
+      
+      Start developing: npm start
+      Build for production: npm run build
     -->
   </body>
 </html>
