@@ -5,11 +5,12 @@ import React from 'react';
  * 
  * Features:
  * - Square aspect ratio
- * - Multiple variants: empty, filled, and selected
+ * - Multiple variants: empty, filled, selected, and locked
  * - Replaceable image/SVG content for filled variant
  * - Thick top border for filled variant
  * - Background pattern for empty variant
  * - Corner indicators for selected variant
+ * - Lock icon for locked variant
  */
 export interface TileProps {
   /** Size variant of the tile */
@@ -21,7 +22,7 @@ export interface TileProps {
   /** Show hover effect */
   hoverEffect?: boolean;
   /** Tile variant */
-  variant?: 'empty' | 'filled' | 'selected';
+  variant?: 'empty' | 'filled' | 'selected' | 'locked';
   /** Image/SVG source to display (for filled variant) */
   image?: string;
   /** Alt text for image (for filled variant) */
@@ -32,26 +33,28 @@ export interface TileProps {
   emptyBackground?: string;
   /** Corner color for selected variant */
   cornerColor?: string;
+  /** Lock icon source */
+  lockIcon?: string;
 }
 
 /**
  * Size configuration for consistent tile dimensions
  */
 const SIZE_CONFIG = {
-  xs: { container: 'w-16 h-16', corner: 'w-1 h-1' },      // 64px
-  sm: { container: 'w-20 h-20', corner: 'w-1.5 h-1.5' },  // 80px
-  md: { container: 'w-24 h-24', corner: 'w-2 h-2' },      // 96px
-  lg: { container: 'w-28 h-28', corner: 'w-2.5 h-2.5' },  // 112px
-  xl: { container: 'w-32 h-32', corner: 'w-3 h-3' },      // 128px
-  '2xl': { container: 'w-36 h-36', corner: 'w-3.5 h-3.5' }, // 144px
+  xs: { container: 'w-16 h-16', corner: 'w-1 h-1', lock: 'w-4 h-4' },      // 64px
+  sm: { container: 'w-20 h-20', corner: 'w-1.5 h-1.5', lock: 'w-5 h-5' },  // 80px
+  md: { container: 'w-24 h-24', corner: 'w-2 h-2', lock: 'w-6 h-6' },      // 96px
+  lg: { container: 'w-28 h-28', corner: 'w-2.5 h-2.5', lock: 'w-7 h-7' },  // 112px
+  xl: { container: 'w-32 h-32', corner: 'w-3 h-3', lock: 'w-8 h-8' },      // 128px
+  '2xl': { container: 'w-36 h-36', corner: 'w-3.5 h-3.5', lock: 'w-9 h-9' }, // 144px
 } as const;
 
 /**
  * Specific pixel size variants
  */
 const PIXEL_SIZE_CONFIG = {
-  '84px': { container: 'w-[84px] h-[84px]', corner: 'w-2 h-2' },
-  '116px': { container: 'w-[116px] h-[116px]', corner: 'w-2.5 h-2.5' },
+  '84px': { container: 'w-[84px] h-[84px]', corner: 'w-2 h-2', lock: 'w-6 h-6' },
+  '116px': { container: 'w-[116px] h-[116px]', corner: 'w-2.5 h-2.5', lock: 'w-8 h-8' },
 } as const;
 
 /**
@@ -71,6 +74,10 @@ const DEFAULT_EMPTY_BG = '/images/tile-bg.svg';
  * Default corner color for selected tiles
  */
 const DEFAULT_CORNER_COLOR = '#878787';
+/**
+ * Default lock icon
+ */
+const DEFAULT_LOCK_ICON = '/icons/custom-lock.svg';
 
 /**
  * Corner Component for selected variant
@@ -103,9 +110,25 @@ const Corner: React.FC<{ position: 'top-left' | 'top-right' | 'bottom-left' | 'b
 };
 
 /**
+ * Lock Icon Component for locked variant
+ */
+const LockIcon: React.FC<{ icon: string; size: string }> = ({ icon, size }) => (
+  <div className="absolute inset-0 flex items-center justify-center">
+    <img 
+      src={icon}
+      alt="Locked"
+      className={`
+        ${size}
+        object-contain
+      `}
+    />
+  </div>
+);
+
+/**
  * Tile Component
  * 
- * Square tile with empty, filled, and selected variants.
+ * Square tile with empty, filled, selected, and locked variants.
  */
 export const Tile: React.FC<TileProps> = ({
   size = 'md',
@@ -118,6 +141,7 @@ export const Tile: React.FC<TileProps> = ({
   topBorderThickness = 'md',
   emptyBackground = DEFAULT_EMPTY_BG,
   cornerColor = DEFAULT_CORNER_COLOR,
+  lockIcon = DEFAULT_LOCK_ICON,
 }) => {
   const sizeClasses = SIZE_CONFIG[size];
   const borderClass = BORDER_CONFIG[topBorderThickness];
@@ -149,6 +173,34 @@ export const Tile: React.FC<TileProps> = ({
         <Corner position="top-right" color={cornerColor} size={sizeClasses.corner} />
         <Corner position="bottom-left" color={cornerColor} size={sizeClasses.corner} />
         <Corner position="bottom-right" color={cornerColor} size={sizeClasses.corner} />
+      </div>
+    );
+  }
+
+  // Locked variant - has lock icon overlay
+  if (variant === 'locked') {
+    return (
+      <div
+        className={`
+          border
+          border-[#878787]
+          bg-transparent
+          relative
+          ${sizeClasses.container}
+          ${onClick ? 'cursor-pointer' : ''}
+          ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
+          ${className}
+        `}
+        style={{
+          backgroundImage: `url(${emptyBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        onClick={onClick}
+      >
+        {/* Lock icon overlay */}
+        <LockIcon icon={lockIcon} size={sizeClasses.lock} />
       </div>
     );
   }
@@ -222,6 +274,7 @@ export const PixelTile: React.FC<Omit<TileProps, 'size'> & { size: keyof typeof 
   topBorderThickness = 'md',
   emptyBackground = DEFAULT_EMPTY_BG,
   cornerColor = DEFAULT_CORNER_COLOR,
+  lockIcon = DEFAULT_LOCK_ICON,
 }) => {
   const sizeClasses = PIXEL_SIZE_CONFIG[size];
   const borderClass = BORDER_CONFIG[topBorderThickness];
@@ -253,6 +306,34 @@ export const PixelTile: React.FC<Omit<TileProps, 'size'> & { size: keyof typeof 
         <Corner position="top-right" color={cornerColor} size={sizeClasses.corner} />
         <Corner position="bottom-left" color={cornerColor} size={sizeClasses.corner} />
         <Corner position="bottom-right" color={cornerColor} size={sizeClasses.corner} />
+      </div>
+    );
+  }
+
+  // Locked variant - has lock icon overlay
+  if (variant === 'locked') {
+    return (
+      <div
+        className={`
+          border
+          border-[#878787]
+          bg-transparent
+          relative
+          ${sizeClasses.container}
+          ${onClick ? 'cursor-pointer' : ''}
+          ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
+          ${className}
+        `}
+        style={{
+          backgroundImage: `url(${emptyBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        onClick={onClick}
+      >
+        {/* Lock icon overlay */}
+        <LockIcon icon={lockIcon} size={sizeClasses.lock} />
       </div>
     );
   }

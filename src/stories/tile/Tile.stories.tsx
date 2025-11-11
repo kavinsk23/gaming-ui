@@ -1,5 +1,5 @@
 // PixelTile.stories.tsx
-import { PixelTile } from './Tile';
+import Tile, { PixelTile } from './Tile';
 
 const meta: Meta<typeof PixelTile> = {
   title: 'Components/PixelTile',
@@ -76,7 +76,13 @@ export const PixelComparison: Story = {
         <PixelTile variant="empty" size="116px" />
         <PixelTile variant="filled" size="116px" image="/item-icon.svg" alt="Item" />
         <PixelTile variant="selected" size="116px" />
+        
       </div>
+      // Locked tile
+<Tile variant="locked" size="lg" />
+
+// Custom lock icon
+<Tile variant="locked" size="lg" lockIcon="/custom-lock.svg" />
     </div>
   ),
 };
