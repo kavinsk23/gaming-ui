@@ -1,5 +1,6 @@
 // PixelTile.stories.tsx
 import Tile, { PixelTile } from './Tile';
+import weapon1 from "../../../public/images/wepon1.svg"
 
 const meta: Meta<typeof PixelTile> = {
   title: 'Components/PixelTile',
@@ -45,7 +46,7 @@ export const DefaultPixelFilled: Story = {
   args: {
     variant: 'filled',
     size: '116px',
-    image: '/weapon-icon.svg',
+    image: [weapon1],
     alt: 'Weapon',
   },
 };
