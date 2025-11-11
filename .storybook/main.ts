@@ -1,20 +1,18 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
-  "stories": [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  stories: [
+    "../src/**/*.stories.@(js|jsx|ts|tsx)" // Remove .mdx for now
   ],
-  "addons": [
+  addons: [
     "@storybook/preset-create-react-app",
-    "@storybook/addon-docs",
     "@storybook/addon-onboarding"
   ],
-  "framework": {
-    "name": "@storybook/react-webpack5",
-    "options": {}
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {}
   },
-  "staticDirs": [
+  staticDirs: [
     "../public"
   ]
 };
