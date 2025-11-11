@@ -9,13 +9,13 @@ export interface RarityColorsProps {
 }
 
 const RARITY_CONFIG = [
-  { name: 'COMMON', color: 'bg-common', textColor: 'text-gray-800' },
-  { name: 'UNCOMMON', color: 'bg-uncommon', textColor: 'text-gray-800' },
-  { name: 'RARE', color: 'bg-rare', textColor: 'text-white' },
-  { name: 'LEGENDARY', color: 'bg-legendary', textColor: 'text-white' },
-  { name: 'EPIC', color: 'bg-epic', textColor: 'text-white' },
-  { name: 'MYTHIC', color: 'bg-mythic', textColor: 'text-gray-800' },
-  { name: 'PRIMAL', color: 'bg-primal', textColor: 'text-white' },
+  { name: 'COMMON', color: '#D9D9D9' },
+  { name: 'UNCOMMON', color: '#C5FFB3' },
+  { name: 'RARE', color: '#1A98FF' },
+  { name: 'LEGENDARY', color: '#B561FF' },
+  { name: 'EPIC', color: '#FFB12A' },
+  { name: 'MYTHIC', color: '#A2FFFD' },
+  { name: 'PRIMAL', color: '#F9393C' },
 ] as const;
 
 export const RarityColors: React.FC<RarityColorsProps> = ({
@@ -25,17 +25,20 @@ export const RarityColors: React.FC<RarityColorsProps> = ({
     <div className={`flex flex-wrap gap-8 justify-center ${className}`}>
       {RARITY_CONFIG.map((rarity) => (
         <div key={rarity.name} className="flex flex-col items-center space-y-3">
-          {/* 136px x 136px Square - using exact pixel values */}
+          {/* 136px x 136px Square */}
           <div 
             className="w-34 h-34 shadow-lg"
             style={{ 
               width: '136px', 
               height: '136px',
-              backgroundColor: getColorValue(rarity.color)
+              backgroundColor: rarity.color
             }}
           />
-          {/* Rarity Label */}
-          <span className={`font-bold text-lg ${rarity.textColor}`}>
+          {/* Text with same fucking color as square */}
+          <span 
+            className="font-bold text-lg"
+            style={{ color: rarity.color }}
+          >
             {rarity.name}
           </span>
         </div>
@@ -43,19 +46,5 @@ export const RarityColors: React.FC<RarityColorsProps> = ({
     </div>
   );
 };
-
-// Helper function to get actual color values
-function getColorValue(tailwindClass: string): string {
-  const colorMap: Record<string, string> = {
-    'bg-common': '#D9D9D9',
-    'bg-uncommon': '#C5FFB3',
-    'bg-rare': '#1A98FF',
-    'bg-legendary': '#B561FF',
-    'bg-epic': '#FFB12A',
-    'bg-mythic': '#A2FFFD',
-    'bg-primal': '#F9393C',
-  };
-  return colorMap[tailwindClass] || '#000000';
-}
 
 export default RarityColors;
