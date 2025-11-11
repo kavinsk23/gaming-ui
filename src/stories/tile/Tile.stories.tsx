@@ -1,10 +1,9 @@
-// Tile.stories.tsx
-import { Tile, PixelTile } from './Tile';
-import wepon1 from "../../../public/images/wepon1.svg"
+// PixelTile.stories.tsx
+import { PixelTile } from './Tile';
 
-const meta: Meta<typeof Tile> = {
-  title: 'Components/Tile',
-  component: Tile,
+const meta: Meta<typeof PixelTile> = {
+  title: 'Components/PixelTile',
+  component: PixelTile,
   parameters: {
     layout: 'centered',
   },
@@ -12,11 +11,11 @@ const meta: Meta<typeof Tile> = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+      options: ['84px', '116px'],
     },
     variant: {
       control: { type: 'select' },
-      options: ['empty', 'filled'],
+      options: ['empty', 'filled', 'selected'],
     },
     topBorderThickness: {
       control: { type: 'select' },
@@ -25,95 +24,59 @@ const meta: Meta<typeof Tile> = {
     hoverEffect: {
       control: 'boolean',
     },
+    cornerColor: {
+      control: 'color',
+    },
     onClick: { action: 'clicked' },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Tile>;
+type Story = StoryObj<typeof PixelTile>;
 
-export const EmptyTile: Story = {
+export const DefaultPixelEmpty: Story = {
   args: {
     variant: 'empty',
-    size: 'lg',
+    size: '116px',
   },
 };
 
-export const FilledTile: Story = {
+export const DefaultPixelFilled: Story = {
   args: {
     variant: 'filled',
-    size: 'lg',
+    size: '116px',
     image: '/weapon-icon.svg',
-    alt: 'Weapon Icon',
+    alt: 'Weapon',
   },
 };
 
-export const EmptySizes: Story = {
-  render: () => (
-    <div className="flex gap-4 items-center">
-      <Tile variant="empty" size="xs" />
-      <Tile variant="empty" size="sm" />
-      <Tile variant="empty" size="md" />
-      <Tile variant="empty" size="lg" />
-      <Tile variant="empty" size="xl" />
-      <Tile variant="empty" size="2xl" />
-    </div>
-  ),
+export const DefaultPixelSelected: Story = {
+  args: {
+    variant: 'selected',
+    size: '116px',
+  },
 };
 
-export const FilledSizes: Story = {
-  render: () => (
-    <div className="flex gap-4 items-center">
-      <Tile variant="filled" size="xs" image={wepon1} alt="Item" />
-      <Tile variant="filled" size="sm" image={wepon1} alt="Item" />
-      <Tile variant="filled" size="md" image={wepon1} alt="Item" />
-      <Tile variant="filled" size="lg" image={wepon1} alt="Item" />
-      <Tile variant="filled" size="xl" image={wepon1} alt="Item" />
-      <Tile variant="filled" size="2xl" image={wepon1} alt="Item" />
-    </div>
-  ),
+export const EightyFourPixel: Story = {
+  args: {
+    variant: 'selected',
+    size: '84px',
+  },
 };
 
-export const PixelTiles: Story = {
+export const PixelComparison: Story = {
   render: () => (
-    <div className="flex gap-4 items-center">
-      <PixelTile variant="empty" size="84px" />
-      <PixelTile variant="filled" size="84px" image="/item-icon.svg" alt="Item" />
-      <PixelTile variant="empty" size="116px" />
-      <PixelTile variant="filled" size="116px" image="/item-icon.svg" alt="Item" />
-    </div>
-  ),
-};
-
-export const BorderThickness: Story = {
-  render: () => (
-    <div className="flex gap-4 items-center">
-      <Tile variant="filled" size="lg" image="/item-icon.svg" alt="Item" topBorderThickness="sm" />
-      <Tile variant="filled" size="lg" image="/item-icon.svg" alt="Item" topBorderThickness="md" />
-      <Tile variant="filled" size="lg" image="/item-icon.svg" alt="Item" topBorderThickness="lg" />
-    </div>
-  ),
-};
-
-export const InteractiveTiles: Story = {
-  render: () => (
-    <div className="flex gap-4 items-center">
-      <Tile variant="empty" size="lg" hoverEffect />
-      <Tile variant="filled" size="lg" image="/item-icon.svg" alt="Item" hoverEffect />
-      <PixelTile variant="empty" size="116px" hoverEffect />
-      <PixelTile variant="filled" size="116px" image="/item-icon.svg" alt="Item" hoverEffect />
-    </div>
-  ),
-};
-
-export const GamingItems: Story = {
-  render: () => (
-    <div className="flex gap-4 items-center">
-      <Tile variant="filled" size="lg" image="/weapon-icon.svg" alt="Weapon" />
-      <Tile variant="filled" size="lg" image="/armor-icon.svg" alt="Armor" />
-      <Tile variant="filled" size="lg" image="/potion-icon.svg" alt="Potion" />
-      <Tile variant="filled" size="lg" image="/magic-icon.svg" alt="Magic" />
-      <Tile variant="filled" size="lg" image="/key-icon.svg" alt="Key" />
+    <div className="flex flex-col gap-4 items-center">
+      <div className="flex gap-4 items-center">
+        <PixelTile variant="empty" size="84px" />
+        <PixelTile variant="filled" size="84px" image="/item-icon.svg" alt="Item" />
+        <PixelTile variant="selected" size="84px" />
+      </div>
+      <div className="flex gap-4 items-center">
+        <PixelTile variant="empty" size="116px" />
+        <PixelTile variant="filled" size="116px" image="/item-icon.svg" alt="Item" />
+        <PixelTile variant="selected" size="116px" />
+      </div>
     </div>
   ),
 };

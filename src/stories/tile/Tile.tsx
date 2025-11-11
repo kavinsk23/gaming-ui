@@ -5,10 +5,11 @@ import React from 'react';
  * 
  * Features:
  * - Square aspect ratio
- * - Multiple variants: empty and filled
+ * - Multiple variants: empty, filled, and selected
  * - Replaceable image/SVG content for filled variant
  * - Thick top border for filled variant
  * - Background pattern for empty variant
+ * - Corner indicators for selected variant
  */
 export interface TileProps {
   /** Size variant of the tile */
@@ -20,7 +21,7 @@ export interface TileProps {
   /** Show hover effect */
   hoverEffect?: boolean;
   /** Tile variant */
-  variant?: 'empty' | 'filled';
+  variant?: 'empty' | 'filled' | 'selected';
   /** Image/SVG source to display (for filled variant) */
   image?: string;
   /** Alt text for image (for filled variant) */
@@ -29,26 +30,28 @@ export interface TileProps {
   topBorderThickness?: 'sm' | 'md' | 'lg';
   /** Background pattern for empty variant */
   emptyBackground?: string;
+  /** Corner color for selected variant */
+  cornerColor?: string;
 }
 
 /**
  * Size configuration for consistent tile dimensions
  */
 const SIZE_CONFIG = {
-  xs: { container: 'w-16 h-16' },      // 64px
-  sm: { container: 'w-20 h-20' },      // 80px
-  md: { container: 'w-24 h-24' },      // 96px
-  lg: { container: 'w-28 h-28' },      // 112px
-  xl: { container: 'w-32 h-32' },      // 128px
-  '2xl': { container: 'w-36 h-36' },   // 144px
+  xs: { container: 'w-16 h-16', corner: 'w-1 h-1' },      // 64px
+  sm: { container: 'w-20 h-20', corner: 'w-1.5 h-1.5' },  // 80px
+  md: { container: 'w-24 h-24', corner: 'w-2 h-2' },      // 96px
+  lg: { container: 'w-28 h-28', corner: 'w-2.5 h-2.5' },  // 112px
+  xl: { container: 'w-32 h-32', corner: 'w-3 h-3' },      // 128px
+  '2xl': { container: 'w-36 h-36', corner: 'w-3.5 h-3.5' }, // 144px
 } as const;
 
 /**
  * Specific pixel size variants
  */
 const PIXEL_SIZE_CONFIG = {
-  '84px': { container: 'w-[84px] h-[84px]' },
-  '116px': { container: 'w-[116px] h-[116px]' },
+  '84px': { container: 'w-[84px] h-[84px]', corner: 'w-2 h-2' },
+  '116px': { container: 'w-[116px] h-[116px]', corner: 'w-2.5 h-2.5' },
 } as const;
 
 /**
@@ -64,11 +67,45 @@ const BORDER_CONFIG = {
  * Default background pattern for empty tiles
  */
 const DEFAULT_EMPTY_BG = '/images/tile-bg.svg';
+/**
+ * Default corner color for selected tiles
+ */
+const DEFAULT_CORNER_COLOR = '#878787';
+
+/**
+ * Corner Component for selected variant
+ */
+const Corner: React.FC<{ position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'; color: string; size: string }> = ({
+  position,
+  color,
+  size,
+}) => {
+  const positionClasses = {
+    'top-left': 'top-[-3px] left-[-3px] border-r border-b rotate-180',
+    'top-right': 'top-[-3px] right-[-3px] border-l border-b rotate-180',
+    'bottom-left': 'bottom-[-3px] left-[-3px] border-r border-t rotate-180',
+    'bottom-right': 'bottom-[-3px] right-[-3px] border-l border-t rotate-180',
+  };
+
+  return (
+    <div
+      className={`
+        absolute
+        ${positionClasses[position]}
+        ${size}
+        border-[#878787]
+      `}
+      style={{
+        borderColor: color,
+      }}
+    />
+  );
+};
 
 /**
  * Tile Component
  * 
- * Square tile with empty and filled variants.
+ * Square tile with empty, filled, and selected variants.
  */
 export const Tile: React.FC<TileProps> = ({
   size = 'md',
@@ -80,9 +117,41 @@ export const Tile: React.FC<TileProps> = ({
   alt = '',
   topBorderThickness = 'md',
   emptyBackground = DEFAULT_EMPTY_BG,
+  cornerColor = DEFAULT_CORNER_COLOR,
 }) => {
   const sizeClasses = SIZE_CONFIG[size];
   const borderClass = BORDER_CONFIG[topBorderThickness];
+
+  // Selected variant - has corner indicators
+  if (variant === 'selected') {
+    return (
+      <div
+        className={`
+          border
+          border-[#878787]
+          bg-transparent
+          relative
+          ${sizeClasses.container}
+          ${onClick ? 'cursor-pointer' : ''}
+          ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
+          ${className}
+        `}
+        style={{
+          backgroundImage: `url(${emptyBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        onClick={onClick}
+      >
+        {/* Corner indicators */}
+        <Corner position="top-left" color={cornerColor} size={sizeClasses.corner} />
+        <Corner position="top-right" color={cornerColor} size={sizeClasses.corner} />
+        <Corner position="bottom-left" color={cornerColor} size={sizeClasses.corner} />
+        <Corner position="bottom-right" color={cornerColor} size={sizeClasses.corner} />
+      </div>
+    );
+  }
 
   // Empty variant - always has background pattern
   if (variant === 'empty') {
@@ -152,9 +221,41 @@ export const PixelTile: React.FC<Omit<TileProps, 'size'> & { size: keyof typeof 
   alt = '',
   topBorderThickness = 'md',
   emptyBackground = DEFAULT_EMPTY_BG,
+  cornerColor = DEFAULT_CORNER_COLOR,
 }) => {
   const sizeClasses = PIXEL_SIZE_CONFIG[size];
   const borderClass = BORDER_CONFIG[topBorderThickness];
+
+  // Selected variant - has corner indicators
+  if (variant === 'selected') {
+    return (
+      <div
+        className={`
+          border
+          border-[#878787]
+          bg-transparent
+          relative
+          ${sizeClasses.container}
+          ${onClick ? 'cursor-pointer' : ''}
+          ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
+          ${className}
+        `}
+        style={{
+          backgroundImage: `url(${emptyBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        onClick={onClick}
+      >
+        {/* Corner indicators */}
+        <Corner position="top-left" color={cornerColor} size={sizeClasses.corner} />
+        <Corner position="top-right" color={cornerColor} size={sizeClasses.corner} />
+        <Corner position="bottom-left" color={cornerColor} size={sizeClasses.corner} />
+        <Corner position="bottom-right" color={cornerColor} size={sizeClasses.corner} />
+      </div>
+    );
+  }
 
   // Empty variant - always has background pattern
   if (variant === 'empty') {
