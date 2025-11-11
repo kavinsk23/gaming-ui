@@ -1,13 +1,13 @@
 import React from 'react';
 
 /**
- * Tile component - Square container with background image
+ * Tile component - Square container with multiple variants
  * 
  * Features:
  * - Square aspect ratio
- * - SVG background image
- * - Multiple size variants
- * - Optional hover effects
+ * - Multiple variants: empty and filled
+ * - Replaceable image/SVG content for filled variant
+ * - Thick top border for filled variant
  */
 export interface TileProps {
   /** Size variant of the tile */
@@ -16,91 +16,108 @@ export interface TileProps {
   className?: string;
   /** Optional click handler */
   onClick?: () => void;
-  /** Background image source (SVG) */
-  backgroundImage?: string;
-
-  /** Content to display inside the tile */
-  children?: React.ReactNode;
   /** Show hover effect */
   hoverEffect?: boolean;
+  /** Tile variant */
+  variant?: 'empty' | 'filled';
+  /** Image/SVG source to display (for filled variant) */
+  image?: string;
+  /** Alt text for image (for filled variant) */
+  alt?: string;
+  /** Thickness of the top border (for filled variant) */
+  topBorderThickness?: 'sm' | 'md' | 'lg';
 }
 
 /**
  * Size configuration for consistent tile dimensions
- * Includes specific 84px and 116px sizes as requested
  */
 const SIZE_CONFIG = {
-  xs: { container: 'w-16 h-16', text: 'text-xs' },      // 64px
-  sm: { container: 'w-20 h-20', text: 'text-sm' },      // 80px
-  md: { container: 'w-24 h-24', text: 'text-base' },    // 96px
-  lg: { container: 'w-28 h-28', text: 'text-lg' },      // 112px
-  xl: { container: 'w-32 h-32', text: 'text-xl' },      // 128px
-  '2xl': { container: 'w-36 h-36', text: 'text-2xl' },  // 144px
+  xs: { container: 'w-16 h-16' },      // 64px
+  sm: { container: 'w-20 h-20' },      // 80px
+  md: { container: 'w-24 h-24' },      // 96px
+  lg: { container: 'w-28 h-28' },      // 112px
+  xl: { container: 'w-32 h-32' },      // 128px
+  '2xl': { container: 'w-36 h-36' },   // 144px
 } as const;
 
 /**
  * Specific pixel size variants
  */
 const PIXEL_SIZE_CONFIG = {
-  '84px': { container: 'w-[84px] h-[84px]', text: 'text-base' },
-  '116px': { container: 'w-[116px] h-[116px]', text: 'text-lg' },
+  '84px': { container: 'w-[84px] h-[84px]' },
+  '116px': { container: 'w-[116px] h-[116px]' },
 } as const;
 
 /**
- * Default background SVG (you can replace this)
+ * Top border thickness configuration (for filled variant)
  */
-const DEFAULT_BACKGROUND = '/images/tile-bg.svg';
+const BORDER_CONFIG = {
+  sm: 'border-t-[3px]',
+  md: 'border-t-[4px]',
+  lg: 'border-t-[6px]',
+} as const;
 
 /**
  * Tile Component
  * 
- * Square tile with SVG background, perfect for icons, mod thumbnails, or game items.
+ * Square tile with empty and filled variants.
  */
 export const Tile: React.FC<TileProps> = ({
   size = 'md',
   className = '',
   onClick,
-  backgroundImage = DEFAULT_BACKGROUND,
-  children,
   hoverEffect = false,
+  variant = 'empty',
+  image,
+  alt = '',
+  topBorderThickness = 'md',
 }) => {
   const sizeClasses = SIZE_CONFIG[size];
+  const borderClass = BORDER_CONFIG[topBorderThickness];
 
+  // Empty variant
+  if (variant === 'empty') {
+    return (
+      <div
+        className={`
+          border
+          border-[#878787]
+          bg-transparent
+          ${sizeClasses.container}
+          ${onClick ? 'cursor-pointer' : ''}
+          ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
+          ${className}
+        `}
+        onClick={onClick}
+      />
+    );
+  }
+
+  // Filled variant
   return (
     <div
       className={`
+        border
+        border-[#878787]
+        ${borderClass}
+        border-t-white
+        bg-transparent
         relative
-        flex
-        items-center
-        justify-center
         overflow-hidden
         ${sizeClasses.container}
         ${onClick ? 'cursor-pointer' : ''}
-        ${hoverEffect ? 'hover:scale-105 hover:shadow-lg transition-all duration-200' : ''}
+        ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
         ${className}
       `}
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
       onClick={onClick}
     >
-      {/* Optional overlay for better text readability */}
-      {children && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className={`
-            text-white
-            font-semibold
-            text-center
-            uppercase
-            tracking-wide
-            ${sizeClasses.text}
-          `}>
-            {children}
-          </div>
-        </div>
+      {/* Image/SVG content */}
+      {image && (
+        <img 
+          src={image}
+          alt={alt}
+          className="w-full h-full object-cover p-1"
+        />
       )}
     </div>
   );
@@ -113,47 +130,58 @@ export const PixelTile: React.FC<Omit<TileProps, 'size'> & { size: keyof typeof 
   size = '116px',
   className = '',
   onClick,
-  backgroundImage = DEFAULT_BACKGROUND,
-  children,
   hoverEffect = false,
+  variant = 'empty',
+  image,
+  alt = '',
+  topBorderThickness = 'md',
 }) => {
   const sizeClasses = PIXEL_SIZE_CONFIG[size];
+  const borderClass = BORDER_CONFIG[topBorderThickness];
 
+  // Empty variant
+  if (variant === 'empty') {
+    return (
+      <div
+        className={`
+          border
+          border-[#878787]
+          bg-transparent
+          ${sizeClasses.container}
+          ${onClick ? 'cursor-pointer' : ''}
+          ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
+          ${className}
+        `}
+        onClick={onClick}
+      />
+    );
+  }
+
+  // Filled variant
   return (
     <div
       className={`
+        border
+        border-[#878787]
+        ${borderClass}
+        border-t-white
+        bg-transparent
         relative
-        flex
-        items-center
-        justify-center
         overflow-hidden
         ${sizeClasses.container}
         ${onClick ? 'cursor-pointer' : ''}
-        ${hoverEffect ? 'hover:scale-105 hover:shadow-lg transition-all duration-200' : ''}
+        ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
         ${className}
       `}
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
       onClick={onClick}
     >
-      {/* Optional overlay for better text readability */}
-      {children && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className={`
-            text-white
-            font-semibold
-            text-center
-            uppercase
-            tracking-wide
-            ${sizeClasses.text}
-          `}>
-            {children}
-          </div>
-        </div>
+      {/* Image/SVG content */}
+      {image && (
+        <img 
+          src={image}
+          alt={alt}
+          className="w-full h-full object-cover p-1"
+        />
       )}
     </div>
   );
