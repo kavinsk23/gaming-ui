@@ -72,7 +72,7 @@ export const Title: React.FC<TitleProps> = ({
         ${className}
       `}
 style={{
-  background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, #3A3A3A 25%, #3A3A3A 65%, rgba(0, 0, 0, 0.3) 100%)'
+  background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(58, 58, 58, 0.8) 20%, #3A3A3A 40%, #3A3A3A 60%, rgba(58, 58, 58, 0.8) 80%, rgba(0, 0, 0, 0.3) 100%)'
 }}
       onClick={onClick}
     >
