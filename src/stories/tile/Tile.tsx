@@ -8,6 +8,7 @@ import React from 'react';
  * - Multiple variants: empty and filled
  * - Replaceable image/SVG content for filled variant
  * - Thick top border for filled variant
+ * - Background pattern for empty variant
  */
 export interface TileProps {
   /** Size variant of the tile */
@@ -26,6 +27,8 @@ export interface TileProps {
   alt?: string;
   /** Thickness of the top border (for filled variant) */
   topBorderThickness?: 'sm' | 'md' | 'lg';
+  /** Background pattern for empty variant */
+  emptyBackground?: string;
 }
 
 /**
@@ -58,6 +61,11 @@ const BORDER_CONFIG = {
 } as const;
 
 /**
+ * Default background pattern for empty tiles
+ */
+const DEFAULT_EMPTY_BG = '/images/tile-bg.svg';
+
+/**
  * Tile Component
  * 
  * Square tile with empty and filled variants.
@@ -71,11 +79,12 @@ export const Tile: React.FC<TileProps> = ({
   image,
   alt = '',
   topBorderThickness = 'md',
+  emptyBackground = DEFAULT_EMPTY_BG,
 }) => {
   const sizeClasses = SIZE_CONFIG[size];
   const borderClass = BORDER_CONFIG[topBorderThickness];
 
-  // Empty variant
+  // Empty variant - always has background pattern
   if (variant === 'empty') {
     return (
       <div
@@ -83,11 +92,18 @@ export const Tile: React.FC<TileProps> = ({
           border
           border-[#878787]
           bg-transparent
+          relative
           ${sizeClasses.container}
           ${onClick ? 'cursor-pointer' : ''}
           ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
           ${className}
         `}
+        style={{
+          backgroundImage: `url(${emptyBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
         onClick={onClick}
       />
     );
@@ -100,7 +116,7 @@ export const Tile: React.FC<TileProps> = ({
         border
         border-[#878787]
         ${borderClass}
-        border-t-white
+        border-t-[#878787]
         bg-transparent
         relative
         overflow-hidden
@@ -135,11 +151,12 @@ export const PixelTile: React.FC<Omit<TileProps, 'size'> & { size: keyof typeof 
   image,
   alt = '',
   topBorderThickness = 'md',
+  emptyBackground = DEFAULT_EMPTY_BG,
 }) => {
   const sizeClasses = PIXEL_SIZE_CONFIG[size];
   const borderClass = BORDER_CONFIG[topBorderThickness];
 
-  // Empty variant
+  // Empty variant - always has background pattern
   if (variant === 'empty') {
     return (
       <div
@@ -147,11 +164,18 @@ export const PixelTile: React.FC<Omit<TileProps, 'size'> & { size: keyof typeof 
           border
           border-[#878787]
           bg-transparent
+          relative
           ${sizeClasses.container}
           ${onClick ? 'cursor-pointer' : ''}
           ${hoverEffect ? 'hover:border-white transition-colors duration-200' : ''}
           ${className}
         `}
+        style={{
+          backgroundImage: `url(${emptyBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
         onClick={onClick}
       />
     );
@@ -164,7 +188,7 @@ export const PixelTile: React.FC<Omit<TileProps, 'size'> & { size: keyof typeof 
         border
         border-[#878787]
         ${borderClass}
-        border-t-white
+        border-t-[#878787]
         bg-transparent
         relative
         overflow-hidden
