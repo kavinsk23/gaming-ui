@@ -88,8 +88,6 @@ export const ButtonStacked: React.FC<ButtonStackedProps> = ({
     <button
       className={`
         relative
-        border
-        border-[#878787]
         bg-black
         flex
         w-[306px]
@@ -98,7 +96,7 @@ export const ButtonStacked: React.FC<ButtonStackedProps> = ({
         justify-center
         ${sizeClasses.container}
         ${!isLocked ? 'cursor-pointer hover:opacity-90 transition-opacity duration-200' : ''}
-        ${variant === 'highlighted' ? 'border-b-[3px] border-b-white' : ''}
+        ${variant === 'highlighted' ? 'border-r-[3px] border-b-white' : ''}
         ${className}
       `}
       onClick={!isLocked ? onClick : undefined}
