@@ -104,12 +104,20 @@ export const ButtonStacked: React.FC<ButtonStackedProps> = ({
       onClick={!isLocked ? onClick : undefined}
       disabled={isLocked}
     >
+      {/* Radial gradient for half oval with soft fade edges */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'radial-gradient(ellipse at right center, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.15) 50%, transparent 75%)'
+        }}
+      />
+
       {/* Background image layer */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center z-0">
         <img 
           src={pattern}
           alt={alt}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-70"
         />
       </div>
 
@@ -134,36 +142,34 @@ export const ButtonStacked: React.FC<ButtonStackedProps> = ({
           </span>
         </div>
 
-        {/* Second row: Three stats with icons */}
-        <div className="flex items-center justify-center gap-4 mr-auto">
-          {stats.map((stat, index) => (
-            <div key={index} className="flex items-center gap-1">
-              <img 
-                src={statIcons[index]}
-                alt={`Stat ${index + 1}`}
-                className={`
-                  ${sizeClasses.icon}
-                  opacity-80
-                  ${isLocked ? '' : ''}
-                `}
-              />
-              <span className={`
-                font-mono
-                text-white
-                ${sizeClasses.stats}
-                ${isLocked ? 'text-gray-400' : ''}
-              `}>
-                {stat}
-              </span>
-            </div>
-          ))}
-        </div>
+<div className="flex items-center justify-center gap-4 mr-auto">
+  {stats.map((stat, index) => (
+    <div key={index} className="flex items-center gap-1">
+      <img 
+        src={statIcons[index]}
+        alt={`Stat ${index + 1}`}
+        className={`
+          ${sizeClasses.icon}
+          opacity-80
+        `}
+      />
+      <span className={`
+        font-mono
+        ${isLocked && index === 1 ? 'text-[#FE6163]' : 'text-white'}
+        ${sizeClasses.stats}
+        ${isLocked && index !== 1 ? 'text-white' : ''}
+      `}>
+        {stat}
+      </span>
+    </div>
+  ))}
+</div>
       </div>
 
-      {/* Lock overlay for locked variant */}
+      {/* Lock overlay for locked variant - EMPTY NOW, JUST KEEPING THE STRUCTURE */}
       {isLocked && (
-        <div className="absolute inset-0 bg-black flex items-center justify-center">
-          
+        <div className="absolute inset-0 flex items-center justify-center z-0">
+          {/* Empty - background image will show through */}
         </div>
       )}
     </button>
