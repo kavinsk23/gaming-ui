@@ -29,9 +29,9 @@ const SIZE_CONFIG = {
     percentage: 'text-sm'
   },
   md: {
-    container: 'h-10 px-4',
+    container: 'h-8 px-4',
     text: 'text-base',
-    circle: 'w-4 h-4',
+    circle: 'w-6 h-6',
     percentage: 'text-base'
   },
   lg: {
@@ -47,12 +47,12 @@ const SIZE_CONFIG = {
  */
 const VARIANT_CONFIG = {
   positive: {
-    gradient: 'linear-gradient(90deg, #8DC740 0%, #8DC740 0%, rgba(141, 199, 64, 0.4) 50%, rgba(141, 199, 64, 0.1) 100%)',
+    gradient: 'linear-gradient(90deg, #8DC740 0%, rgba(141, 199, 64, 0.8) 0%, rgba(141, 199, 64, 0.3) 80%, rgba(141, 199, 64, 0) 100%)',
     circleColor: '#89C53A',
     textColor: 'text-white'
   },
   negative: {
-    gradient: 'linear-gradient(90deg, #DB6660 0%, #DB6660 0%, rgba(219, 102, 96, 0.4) 50%, rgba(219, 102, 96, 0.1) 100%)',
+    gradient: 'linear-gradient(90deg, #DB6660 0%, rgba(219, 102, 96, 0.8) 0%, rgba(219, 102, 96, 0.3) 80%, rgba(219, 102, 96, 0) 100%)',
     circleColor: '#DB6660',
     textColor: 'text-white'
   },
