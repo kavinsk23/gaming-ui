@@ -1,5 +1,6 @@
 import React from 'react';
 import textureImg from "../../../public/images/Texture.png"
+
 /**
  * ButtonBasic component - Gaming-style button with fixed image layer and text
  * 
@@ -47,7 +48,6 @@ const SIZE_CONFIG = {
   },
 } as const;
 
-
 /**
  * ButtonBasic Component
  * 
@@ -70,7 +70,6 @@ export const ButtonBasic: React.FC<ButtonBasicProps> = ({
     <button
       className={`
         relative
-        border-t-2
         border-b-2
         border-white
         bg-[#2E353A]
@@ -78,12 +77,10 @@ export const ButtonBasic: React.FC<ButtonBasicProps> = ({
         items-center
         justify-center
         ${sizeClasses.container}
-        ${!isDisabled ? 'cursor-pointer hover:opacity-90 transition-opacity duration-200' : 'cursor-not-allowed opacity-60'}
+        ${!isDisabled ? 'cursor-pointer hover:opacity-90 text-[#5A5A5A] transition-opacity duration-200' : 'cursor-not-allowed opacity-90'}
+        ${variant === 'highlighted' ? 'border-b-[3px] border-b-white' : ''}
         ${className}
       `}
-      style={{
-        // background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, #2D2D2D 25%, #2D2D2D 75%, rgba(0, 0, 0, 0.3) 100%)'
-      }}
       onClick={!isDisabled ? onClick : undefined}
       disabled={isDisabled}
     >
@@ -109,7 +106,6 @@ export const ButtonBasic: React.FC<ButtonBasicProps> = ({
         relative
         z-10
         ${sizeClasses.text}
-        ${variant === 'highlighted' ? 'text-yellow-300' : ''}
         ${isDisabled ? 'text-gray-400' : ''}
       `}>
         {children}
