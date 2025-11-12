@@ -90,7 +90,7 @@ export const ButtonLong: React.FC<ButtonLongProps> = ({
         relative
         bg-black
         flex
-        w-[306px]
+        w-[374px]
         flex-row
         items-center
         justify-center
@@ -120,7 +120,7 @@ export const ButtonLong: React.FC<ButtonLongProps> = ({
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-row items-center gap-2 w-full">
+      <div className="relative z-10 flex flex-row items-center justify-between gap-2 w-full">
         {/* First row: Icon + Main text */}
         <div className="flex items-center gap-2 mr-auto">
           <ChevronsUp className={`
@@ -140,7 +140,7 @@ export const ButtonLong: React.FC<ButtonLongProps> = ({
           </span>
         </div>
 
-<div className="flex items-center justify-center gap-4 mr-auto">
+<div className="flex items-center justify-center gap-4 ml-auto">
   {stats.map((stat, index) => (
     <div key={index} className="flex items-center gap-1">
       <img 
