@@ -49,12 +49,12 @@ const VARIANT_CONFIG = {
   positive: {
     gradient: 'linear-gradient(90deg, #8DC740 0%, rgba(141, 199, 64, 0.8) 0%, rgba(141, 199, 64, 0.3) 80%, rgba(141, 199, 64, 0) 100%)',
     circleColor: '#89C53A',
-    textColor: 'text-white'
+    textColor: '#89C53A'
   },
   negative: {
     gradient: 'linear-gradient(90deg, #DB6660 0%, rgba(219, 102, 96, 0.8) 0%, rgba(219, 102, 96, 0.3) 80%, rgba(219, 102, 96, 0) 100%)',
     circleColor: '#DB6660',
-    textColor: 'text-white'
+    textColor: '#DB6660'
   },
 } as const;
 
@@ -112,12 +112,14 @@ export const RolledStat: React.FC<RolledStatProps> = ({
         />
 
         {/* Percentage text */}
-        <span className={`
-          font-medium
-          ${variantClasses.textColor}
-          ${sizeClasses.percentage}
-          whitespace-nowrap
-        `}>
+        <span 
+          className={`
+            font-medium
+            ${sizeClasses.percentage}
+            whitespace-nowrap
+          `}
+          style={{ color: variantClasses.textColor }}
+        >
           ({percentage > 0 ? '+' : ''}{percentage}%)
         </span>
       </div>
