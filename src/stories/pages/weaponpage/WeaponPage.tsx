@@ -6,6 +6,8 @@ import Title from "../../title/Title";
 import { ElementIcon } from "../../element-icon/ElementIcon";
 import Tile from "../../tile/Tile";
 import PanelBgLight from "../../panel-bg-light/PanelBgLight";
+import { RefreshCcw } from "lucide-react";
+import StatProgressBar from "../../stat-progress-bar/StatProgressBar";
 
 export interface WeaponPageProps {
   /** Weapon name */
@@ -131,8 +133,14 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
         </div>
 
         {/* Bottom Layer - Tiles Section */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-6xl">
-          <PanelBgLight width="full" height="auto" className="p-8">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-6xl">
+          <PanelBgLight
+            width="full"
+            height="auto"
+            className="p-8"
+            borderColor="#878787"
+            borderThickness="md"
+          >
             <div className="flex justify-center gap-6">
               {/* First Part - Title + 5 Tiles */}
               <div className="flex gap-6 flex-col items-center">
@@ -184,75 +192,66 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
           </PanelBgLight>
         </div>
 
-        {/* Right Side - Stats and Buttons */}
         <div className="absolute top-8 right-8 z-20">
-          {/* Progress Stats */}
-          <div className="bg-black/50 backdrop-blur-md rounded-lg p-6 border border-gray-600 mb-6 w-80">
-            <div className="space-y-4">
-              {/* RELOAD */}
-              <div className="flex justify-between items-center">
-                <span className="text-gray-400 uppercase">RELOAD</span>
-                <div className="text-right">
-                  <div className="text-white font-bold text-xl">527</div>
-                  <div className="text-green-400 text-sm">(+27%)</div>
-                </div>
-              </div>
-
-              {/* FIRE RATE */}
-              <div className="flex justify-between items-center">
-                <span className="text-gray-400 uppercase">FIRE RATE</span>
-                <div className="text-right">
-                  <div className="text-white font-bold text-xl">527</div>
-                  <div className="text-green-400 text-sm">(+5%)</div>
-                </div>
-              </div>
-
-              {/* MAG SIZE */}
-              <div className="flex justify-between items-center">
-                <span className="text-gray-400 uppercase">MAG SIZE</span>
-                <div className="text-right">
-                  <div className="text-white font-bold text-xl">527</div>
-                  <div className="text-gray-400 text-sm">(+0%)</div>
-                </div>
-              </div>
+          {/* Top Stats Section */}
+          <div>
+            <div className="flex flex-col gap-0 w-[500px]">
+              <StatProgressBar
+                statName="STAT NAME"
+                value={156}
+                percentage={60}
+                segments={[
+                  { percentage: 40, color: "white" },
+                  { percentage: 20, color: "red" },
+                ]}
+              />
+              <StatProgressBar
+                statName="STAT NAME"
+                value={89}
+                percentage={30}
+                segments={[
+                  { percentage: 15, color: "green" },
+                  { percentage: 15, color: "white" },
+                ]}
+              />
+              <StatProgressBar
+                statName="STAT NAME"
+                value={1200}
+                percentage={80}
+                segments={[
+                  { percentage: 30, color: "white" },
+                  { percentage: 25, color: "green" },
+                  { percentage: 25, color: "red" },
+                ]}
+              />
+              <StatProgressBar
+                statName="STAT NAME"
+                value={450}
+                percentage={45}
+                segments={[
+                  { percentage: 20, color: "white" },
+                  { percentage: 15, color: "green" },
+                  { percentage: 10, color: "gray" },
+                ]}
+              />
             </div>
           </div>
+        </div>
 
-          {/* Rolled Stats */}
-          <div className="bg-black/50 backdrop-blur-md rounded-lg p-6 border border-gray-600 mb-6 w-80">
-            <div className="space-y-2">
-              <div className="text-green-400 text-sm">
-                ROLLED STAT NAME +10%
-              </div>
-              <div className="text-green-400 text-sm">
-                ROLLED STAT NAME +15%
-              </div>
-              <div className="text-green-400 text-sm">
-                ROLLED STAT NAME +15%
-              </div>
-              <div className="text-green-400 text-sm">
-                ROLLED STAT NAME +15%
-              </div>
-              <div className="text-green-400 text-sm">
-                ROLLED STAT NAME +15%
-              </div>
-              <div className="text-green-400 text-sm">
-                ROLLED STAT NAME +15%
-              </div>
-            </div>
-          </div>
-
+        {/* Right Side - Stats and Buttons */}
+        <div className="absolute bottom-72 right-8 z-20">
           {/* Bottom Right - Stacked Buttons */}
           <div className="space-y-4">
             <ButtonStacked
-              mainText="EQUIP"
-              stats={[1, 0, 0]}
+              mainText="ENHANCE"
+              stats={[5, 12, 32]}
               variant="highlighted"
             />
             <ButtonStacked
-              mainText="COMPARE"
-              stats={[2, 1, 0]}
+              mainText="BREAKDOWN"
+              stats={[+20, +3212, +92]}
               variant="default"
+              topIcon={<RefreshCcw className="w-5 h-5 text-white" />}
             />
           </div>
         </div>
