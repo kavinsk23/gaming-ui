@@ -6,8 +6,9 @@ import Title from "../../title/Title";
 import { ElementIcon } from "../../element-icon/ElementIcon";
 import Tile from "../../tile/Tile";
 import PanelBgLight from "../../panel-bg-light/PanelBgLight";
-import { RefreshCcw } from "lucide-react";
+import { RefreshCcw, Zap } from "lucide-react";
 import StatProgressBar from "../../stat-progress-bar/StatProgressBar";
+import Banner from "../../banner/Banner";
 
 export interface WeaponPageProps {
   /** Weapon name */
@@ -132,6 +133,23 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
           </div>
         </div>
 
+        <div className="fixed bottom-64 left-1/2 transform -translate-x-1/2 w-80">
+          <div className="flex flex-col gap-4">
+            {/* First column - Number, icon and power */}
+            <div className="flex items-center gap-3 justify-center">
+              <div className="text-white text-4xl font-bold">731</div>
+              <div className="flex flex-col">
+                <Zap className="text-white w-6 h-6" />
+                <div className="text-white text-sm opacity-50">POWER</div>
+              </div>
+            </div>
+
+            {/* Second column - Enhanced banner */}
+            <div>
+              <Banner size="sm">ENHANCED</Banner>
+            </div>
+          </div>
+        </div>
         {/* Bottom Layer - Tiles Section */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-6xl">
           <PanelBgLight
@@ -194,7 +212,7 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
 
         <div className="absolute top-8 right-8 z-20">
           {/* Top Stats Section */}
-          <div>
+          <div className="flex">
             <div className="flex flex-col gap-0 w-[500px]">
               <StatProgressBar
                 statName="STAT NAME"
@@ -234,6 +252,41 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
                   { percentage: 10, color: "gray" },
                 ]}
               />
+              <StatProgressBar
+                statName="STAT NAME"
+                value={450}
+                percentage={45}
+                segments={[
+                  { percentage: 20, color: "white" },
+                  { percentage: 15, color: "green" },
+                  { percentage: 10, color: "gray" },
+                ]}
+              />
+            </div>
+            <div className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 w-64">
+              <div className="text-white">ROLLED STAT NAME</div>
+              <div className="flex items-center gap-2 text-[#4CAF51] justify-between">
+                +13%
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              </div>
+
+              <div className="text-white">ROLLED STAT NAME</div>
+              <div className="flex items-center gap-2 text-[#4CAF51] justify-between">
+                +13%
+                <div className="w-3 h-3 bg-[#4CAF51] rounded-full"></div>
+              </div>
+
+              <div className="text-white">ROLLED STAT NAME</div>
+              <div className="text-red-400">-8%</div>
+
+              <div className="text-white">ROLLED STAT NAME</div>
+              <div className="flex items-center gap-2 text-red-400 justify-between">
+                -5%
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              </div>
+
+              <div className="text-white">ROLLED STAT NAME</div>
+              <div className="text-[#4CAF51]">+13%</div>
             </div>
           </div>
         </div>

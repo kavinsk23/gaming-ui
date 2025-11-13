@@ -68,9 +68,9 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
   return (
     <div
       className={`
-        flex
+        grid
+        grid-cols-[1fr_auto_auto]
         items-center
-        justify-between
         w-full
         h-8
         px-4
@@ -82,7 +82,7 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
       onClick={onClick}
     >
       {/* Left section: Stat name and value */}
-      <div className="flex items-center gap-3 flex-1 justify-end">
+      <div className="flex items-center gap-3 justify-start">
         <span
           className={`
           font-bold
@@ -107,10 +107,10 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
         </span>
       </div>
 
-      {/* Right section: Progress bar and percentage */}
-      <div className="flex items-center gap-4 flex-1 justify-end">
+      {/* Middle section: Progress bar */}
+      <div className="flex items-center justify-center">
         {/* Multi-color progress bar container */}
-        <div className="flex-1 max-w-[200px] h-2 bg-[#414141] overflow-hidden ml-3">
+        <div className="w-[200px] h-2 bg-[#414141] overflow-hidden mx-3">
           <div className="flex h-full w-full">
             {effectiveSegments.map((segment, index) => (
               <div
@@ -124,25 +124,24 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
             ))}
           </div>
         </div>
-
-        {/* Percentage text */}
-        <span
-          className={`
-          font-mono
-          font-bold
-          text-base
-          min-w-[70px]
-          text-right
-          whitespace-nowrap
-          flex
-          justify-start
-          ${percentageColor}
-        `}
-        >
-          {percentage > 0 ? "+" : ""}
-          {percentage}%
-        </span>
       </div>
+
+      {/* Right section: Percentage text */}
+      <span
+        className={`
+        font-mono
+        font-bold
+        text-base
+        min-w-[50px]
+        text-right
+        whitespace-nowrap
+        justify-self-end
+        ${percentageColor}
+      `}
+      >
+        {percentage > 0 ? "+" : ""}
+        {percentage}%
+      </span>
     </div>
   );
 };
