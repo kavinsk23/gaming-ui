@@ -1,6 +1,6 @@
 import React from "react";
-import Tile from "../../tile/Tile";
-import Title from "../../title/Title";
+import Tile from "../../atoms/tile/Tile";
+import Title from "../../atoms/title/Title";
 
 /**
  * CatalystMods Component

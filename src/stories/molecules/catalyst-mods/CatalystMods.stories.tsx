@@ -2,7 +2,7 @@
 import CatalystMods from "./CatalystMods";
 
 const meta: Meta<typeof CatalystMods> = {
-  title: "Components/CatalystMods",
+  title: "Molecules/CatalystMods",
   component: CatalystMods,
   parameters: {
     layout: "fullscreen",

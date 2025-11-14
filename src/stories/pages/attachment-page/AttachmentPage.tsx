@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-import ButtonStacked from "../../button-stacked/ButtonStacked";
-import ElementalDamage from "../../elemental-damage/ElementalDamage";
+import ButtonStacked from "../../atoms/button-stacked/ButtonStacked";
+import ElementalDamage from "../../atoms/elemental-damage/ElementalDamage";
 import WeaponPageTemplate from "../../templates/weapon-page-template/WeaponPageTemplate";
-import Title from "../../title/Title";
-import { ElementIcon } from "../../element-icon/ElementIcon";
-import Tile from "../../tile/Tile";
-import PanelBgLight from "../../panel-bg-light/PanelBgLight";
+import Title from "../../atoms/title/Title";
+import { ElementIcon } from "../../atoms/element-icon/ElementIcon";
+import Tile from "../../atoms/tile/Tile";
+import PanelBgLight from "../../templates/panel-bg-light/PanelBgLight";
 import { RefreshCcw, Zap } from "lucide-react";
-import StatProgressBar from "../../stat-progress-bar/StatProgressBar";
-import Banner from "../../banner/Banner";
+import StatProgressBar from "../../molecules/stat-progress-bar/StatProgressBar";
+import Banner from "../../atoms/banner/Banner";
 import power from "../../../../public/images/Power.svg";
-import RolledStatItem from "../../rolled-stat-item/RolledStatItem";
-import StatItem from "../../stat-item/StatItem";
-import Popup from "../../molecules/popup/Popup";
+import RolledStatItem from "../../atoms/rolled-stat-item/RolledStatItem";
+import StatItem from "../../atoms/stat-item/StatItem";
 import Header from "../../molecules/header/Header";
-import ModDetails from "../../molecules/molecules/ModDetails/ModDetails";
-import WeaponDetails from "../../molecules/molecules/weapon-details/WeaponDetails";
-import ButtonLong from "../../button-long/ButtonLong";
-import ButtonBasic from "../../button-basic/ButtonBasic";
+import ModDetails from "../../molecules/ModDetails/ModDetails";
+import WeaponDetails from "../../molecules/weapon-details/WeaponDetails";
+import ButtonLong from "../../atoms/button-long/ButtonLong";
+import ButtonBasic from "../../atoms/button-basic/ButtonBasic";
 import { CatalystMods } from "../../molecules/catalyst-mods/CatalystMods";
+import Popup from "../../molecules/popup/Popup";
 
 export interface AttachmentPageProps {
   /** Weapon name */
