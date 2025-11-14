@@ -2,7 +2,7 @@ import React from "react";
 import Popup from "./Popup";
 
 export default {
-  title: "Components/Popup",
+  title: "Molecules/Popup",
   component: Popup,
 };
 

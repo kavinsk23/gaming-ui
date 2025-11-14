@@ -1,10 +1,10 @@
 import React from "react";
-import ButtonBasic from "../../button-basic/ButtonBasic";
 import popupbg from "../../../../public/images/Panel-BG.svg";
 import separatorImg from "../../../../public/images/SeparatorLine.svg";
 import icon1 from "../../../../public/icons/image-40.svg";
 import icon2 from "../../../../public/icons/image-41.svg";
 import icon3 from "../../../../public/icons/image-42.svg";
+import ButtonBasic from "../../atoms/button-basic/ButtonBasic";
 
 interface PopupProps {
   onCancel: () => void;

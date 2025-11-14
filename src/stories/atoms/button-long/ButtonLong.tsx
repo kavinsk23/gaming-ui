@@ -1,7 +1,7 @@
 // ButtonLong.tsx
 import React from "react";
 import { ChevronsUp, Zap } from "lucide-react";
-import pattern from "../../../public/images/Pattern.png";
+import pattern from "../../../../public/images/Pattern.png";
 
 /**
  * ButtonLong component - Gaming-style stacked button with icon and stats

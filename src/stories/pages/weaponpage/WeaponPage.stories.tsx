@@ -2,7 +2,7 @@ import React from "react";
 import { WeaponPage } from "./WeaponPage";
 
 const meta = {
-  title: "Gaming/WeaponPage",
+  title: "Pages/WeaponPage",
   component: WeaponPage,
   parameters: {
     layout: "fullscreen",

@@ -1,5 +1,5 @@
 import React from "react";
-import textureImg from "../../../public/images/Texture.png";
+import textureImg from "../../../../public/images/Texture.png";
 
 /**
  * ButtonBasic component - Gaming-style button with fixed image layer and text

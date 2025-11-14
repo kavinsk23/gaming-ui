@@ -1,23 +1,23 @@
 // ButtonStacked.stories.tsx
-import { ButtonStacked } from './ButtonStacked';
+import { ButtonStacked } from "./ButtonStacked";
 
 const meta: Meta<typeof ButtonStacked> = {
-  title: 'Components/ButtonStacked',
+  title: "Atoms/ButtonStacked",
   component: ButtonStacked,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['default', 'highlighted', 'locked'],
+      control: { type: "select" },
+      options: ["default", "highlighted", "locked"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
-    onClick: { action: 'clicked' },
+    onClick: { action: "clicked" },
   },
 };
 
@@ -26,49 +26,41 @@ type Story = StoryObj<typeof ButtonStacked>;
 
 export const Default: Story = {
   args: {
-    mainText: 'ENHANCE',
+    mainText: "ENHANCE",
     stats: [5, 12, 32],
-    variant: 'default',
-    size: 'md',
+    variant: "default",
+    size: "md",
   },
 };
 
 export const Highlighted: Story = {
   args: {
-    mainText: 'ENHANCE',
+    mainText: "ENHANCE",
     stats: [5, 12, 32],
-    variant: 'highlighted',
-    size: 'md',
+    variant: "highlighted",
+    size: "md",
   },
 };
 
 export const Locked: Story = {
   args: {
-    mainText: 'ENHANCE',
+    mainText: "ENHANCE",
     stats: [5, 12, 32],
-    variant: 'locked',
-    size: 'md',
+    variant: "locked",
+    size: "md",
   },
 };
 
 export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-col gap-4 items-center">
-      <ButtonStacked 
-        mainText="ENHANCE" 
-        stats={[5, 12, 32]} 
-        variant="default" 
+      <ButtonStacked mainText="ENHANCE" stats={[5, 12, 32]} variant="default" />
+      <ButtonStacked
+        mainText="ENHANCE"
+        stats={[5, 12, 32]}
+        variant="highlighted"
       />
-      <ButtonStacked 
-        mainText="ENHANCE" 
-        stats={[5, 12, 32]} 
-        variant="highlighted" 
-      />
-      <ButtonStacked 
-        mainText="ENHANCE" 
-        stats={[5, 12, 32]} 
-        variant="locked" 
-      />
+      <ButtonStacked mainText="ENHANCE" stats={[5, 12, 32]} variant="locked" />
     </div>
   ),
 };
@@ -76,23 +68,23 @@ export const AllVariants: Story = {
 export const DifferentSizes: Story = {
   render: () => (
     <div className="flex flex-col gap-4 items-center">
-      <ButtonStacked 
-        mainText="ENHANCE" 
-        stats={[5, 12, 32]} 
-        variant="default" 
-        size="sm" 
+      <ButtonStacked
+        mainText="ENHANCE"
+        stats={[5, 12, 32]}
+        variant="default"
+        size="sm"
       />
-      <ButtonStacked 
-        mainText="ENHANCE" 
-        stats={[5, 12, 32]} 
-        variant="default" 
-        size="md" 
+      <ButtonStacked
+        mainText="ENHANCE"
+        stats={[5, 12, 32]}
+        variant="default"
+        size="md"
       />
-      <ButtonStacked 
-        mainText="ENHANCE" 
-        stats={[5, 12, 32]} 
-        variant="default" 
-        size="lg" 
+      <ButtonStacked
+        mainText="ENHANCE"
+        stats={[5, 12, 32]}
+        variant="default"
+        size="lg"
       />
     </div>
   ),
@@ -101,34 +93,26 @@ export const DifferentSizes: Story = {
 export const DifferentStats: Story = {
   render: () => (
     <div className="flex flex-col gap-4 items-center">
-      <ButtonStacked 
-        mainText="UPGRADE" 
-        stats={[3, 8, 15]} 
-        variant="default" 
+      <ButtonStacked mainText="UPGRADE" stats={[3, 8, 15]} variant="default" />
+      <ButtonStacked
+        mainText="BOOST"
+        stats={[10, 25, 50]}
+        variant="highlighted"
       />
-      <ButtonStacked 
-        mainText="BOOST" 
-        stats={[10, 25, 50]} 
-        variant="highlighted" 
-      />
-      <ButtonStacked 
-        mainText="MODIFY" 
-        stats={[1, 6, 20]} 
-        variant="default" 
-      />
+      <ButtonStacked mainText="MODIFY" stats={[1, 6, 20]} variant="default" />
     </div>
   ),
 };
 
 export const CustomIcons: Story = {
   args: {
-    mainText: 'ENHANCE',
+    mainText: "ENHANCE",
     stats: [5, 12, 32],
-    variant: 'default',
+    variant: "default",
     statIcons: [
-      '/custom-icons/damage.svg',
-      '/custom-icons/range.svg', 
-      '/custom-icons/speed.svg'
+      "/custom-icons/damage.svg",
+      "/custom-icons/range.svg",
+      "/custom-icons/speed.svg",
     ],
   },
 };
@@ -136,19 +120,18 @@ export const CustomIcons: Story = {
 export const Interactive: Story = {
   render: () => (
     <div className="flex flex-col gap-4 items-center">
-      <ButtonStacked 
-        mainText="ENHANCE" 
-        stats={[5, 12, 32]} 
+      <ButtonStacked
+        mainText="ENHANCE"
+        stats={[5, 12, 32]}
         variant="default"
-        onClick={() => console.log('Enhance clicked!')}
+        onClick={() => console.log("Enhance clicked!")}
       />
-      <ButtonStacked 
-        mainText="UPGRADE" 
-        stats={[8, 16, 24]} 
+      <ButtonStacked
+        mainText="UPGRADE"
+        stats={[8, 16, 24]}
         variant="highlighted"
-        onClick={() => console.log('Upgrade clicked!')}
+        onClick={() => console.log("Upgrade clicked!")}
       />
     </div>
   ),
 };
-

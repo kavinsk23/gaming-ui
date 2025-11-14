@@ -12,13 +12,13 @@ import Banner from "../../atoms/banner/Banner";
 import power from "../../../../public/images/Power.svg";
 import RolledStatItem from "../../atoms/rolled-stat-item/RolledStatItem";
 import StatItem from "../../atoms/stat-item/StatItem";
-import Popup from "../../atoms/molecules/popup/Popup";
 import Header from "../../molecules/header/Header";
 import ModDetails from "../../molecules/ModDetails/ModDetails";
 import WeaponDetails from "../../molecules/weapon-details/WeaponDetails";
 import ButtonLong from "../../atoms/button-long/ButtonLong";
 import ButtonBasic from "../../atoms/button-basic/ButtonBasic";
 import { CatalystMods } from "../../molecules/catalyst-mods/CatalystMods";
+import Popup from "../../molecules/popup/Popup";
 
 export interface AttachmentPageProps {
   /** Weapon name */

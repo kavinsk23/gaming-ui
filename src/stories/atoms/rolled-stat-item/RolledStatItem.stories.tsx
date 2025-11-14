@@ -3,7 +3,7 @@ import React from "react";
 import RolledStatItem from "./RolledStatItem";
 
 export default {
-  title: "Components/RolledStatItem",
+  title: "Atoms/RolledStatItem",
   component: RolledStatItem,
 } as ComponentMeta<typeof RolledStatItem>;
 

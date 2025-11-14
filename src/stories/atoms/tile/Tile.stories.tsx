@@ -1,9 +1,9 @@
 // PixelTile.stories.tsx
 import Tile, { PixelTile } from "./Tile";
-import weapon1 from "../../../public/images/wepon1.svg";
+import weapon1 from "../../../../public/images/wepon1.svg";
 
 const meta: Meta<typeof PixelTile> = {
-  title: "Components/PixelTile",
+  title: "Atoms/PixelTile",
   component: PixelTile,
   parameters: {
     layout: "centered",

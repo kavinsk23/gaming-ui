@@ -1,22 +1,22 @@
-import { PanelBgLight } from './PanelBgLight';
+import { PanelBgLight } from "./PanelBgLight";
 
 const meta: Meta<typeof PanelBgLight> = {
-  title: 'Components/PanelBgLight',
+  title: "Templates/PanelBgLight",
   component: PanelBgLight,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     width: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg', 'full', 'auto'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "full", "auto"],
     },
     height: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg', 'full', 'auto'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "full", "auto"],
     },
-    onClick: { action: 'clicked' },
+    onClick: { action: "clicked" },
   },
 };
 
@@ -28,11 +28,13 @@ export const Default: Story = {
     children: (
       <div className="p-6 text-gray-800">
         <h3 className="text-lg font-bold">Light Panel Content</h3>
-        <p className="mt-2">This is the content inside the light panel background.</p>
+        <p className="mt-2">
+          This is the content inside the light panel background.
+        </p>
       </div>
     ),
-    width: 'md',
-    height: 'md',
+    width: "md",
+    height: "md",
   },
 };
 
@@ -82,7 +84,9 @@ export const FullWidth: Story = {
       <PanelBgLight width="full" height="auto">
         <div className="p-6 text-gray-800">
           <h3 className="text-lg font-bold">Full Width Light Panel</h3>
-          <p className="mt-2">This light panel stretches to fill its container width.</p>
+          <p className="mt-2">
+            This light panel stretches to fill its container width.
+          </p>
         </div>
       </PanelBgLight>
     </div>
@@ -91,24 +95,24 @@ export const FullWidth: Story = {
 
 export const CustomBackground: Story = {
   args: {
-    backgroundImage: '/custom-light-bg.svg', // Replace with your actual light SVG path
+    backgroundImage: "/custom-light-bg.svg", // Replace with your actual light SVG path
     children: (
       <div className="p-6 text-gray-800">
         <h3 className="text-lg font-bold">Custom Light Background</h3>
         <p>Using a custom light background image.</p>
       </div>
     ),
-    width: 'md',
-    height: 'md',
+    width: "md",
+    height: "md",
   },
 };
 
 export const Interactive: Story = {
   render: () => (
-    <PanelBgLight 
-      width="md" 
+    <PanelBgLight
+      width="md"
       height="md"
-      onClick={() => console.log('Light panel clicked!')}
+      onClick={() => console.log("Light panel clicked!")}
     >
       <div className="p-6 text-gray-800 text-center">
         <h3 className="text-lg font-bold">Clickable Light Panel</h3>

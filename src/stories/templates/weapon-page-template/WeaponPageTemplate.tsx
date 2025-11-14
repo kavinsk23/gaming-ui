@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 export interface WeaponPageTemplateProps {
   /** Background image URL - defaults to local weapon-bg.png */
   backgroundImage?: string;
   /** Blur intensity (default: 'sm') */
-  blurIntensity?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+  blurIntensity?: "none" | "sm" | "md" | "lg" | "xl";
   /** Overlay opacity (default: 60) */
   overlayOpacity?: number;
   /** Additional CSS classes */
@@ -19,42 +19,40 @@ export interface WeaponPageTemplateProps {
  * Uses fixed local background image by default
  */
 export const WeaponPageTemplate: React.FC<WeaponPageTemplateProps> = ({
-  backgroundImage = '/images/weapon-bg.png',
-  blurIntensity = 'sm',
+  backgroundImage = "/images/weapon-bg.png",
+  blurIntensity = "sm",
   overlayOpacity = 60,
-  className = '',
+  className = "",
   children,
 }) => {
   const blurClasses = {
-    none: 'backdrop-blur-none',
-    sm: 'backdrop-blur-sm',
-    md: 'backdrop-blur-md',
-    lg: 'backdrop-blur-lg',
-    xl: 'backdrop-blur-xl',
+    none: "backdrop-blur-none",
+    sm: "backdrop-blur-sm",
+    md: "backdrop-blur-md",
+    lg: "backdrop-blur-lg",
+    xl: "backdrop-blur-xl",
   };
 
   return (
-    <div 
+    <div
       className={`relative min-h-screen overflow-hidden ${className}`}
       data-testid="weapon-page"
     >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${backgroundImage})` }}
         data-testid="weapon-page-bg"
       />
-      
+
       {/* Blur Layer */}
-      <div 
+      <div
         className={`absolute inset-0 bg-black/${overlayOpacity} ${blurClasses[blurIntensity]}`}
         data-testid="weapon-page-blur"
       />
-      
+
       {/* Content Slot */}
-      <div className="relative z-10 h-full">
-        {children}
-      </div>
+      <div className="relative z-10 h-full">{children}</div>
     </div>
   );
 };

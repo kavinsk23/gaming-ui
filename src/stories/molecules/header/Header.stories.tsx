@@ -11,7 +11,7 @@ const mockIcons = {
 };
 
 const meta: Meta<typeof Header> = {
-  title: "Components/Header",
+  title: "Molecules/Header",
   component: Header,
   parameters: {
     layout: "fullscreen",

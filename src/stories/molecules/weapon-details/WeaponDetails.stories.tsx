@@ -1,7 +1,7 @@
 import WeaponDetails from "./WeaponDetails";
 
 const meta: Meta<typeof WeaponDetails> = {
-  title: "Components/WeaponDetails",
+  title: "Molecules/WeaponDetails",
   component: WeaponDetails,
   parameters: {
     layout: "centered",

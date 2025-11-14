@@ -1,10 +1,10 @@
 import React from "react";
 import { RarityBanner } from "../../templates/rarity-banner/RarityBanner";
-import power from "../../../../../public/images/Power.svg";
-import separatorImage from "../../../../../public/images/SeparatorLine.svg";
+import power from "../../../../public/images/Power.svg";
+import separatorImage from "../../../../public/images/SeparatorLine.svg";
 import RolledStat from "../../atoms/rolled-stat/RolledStat";
-import modDetailsBg from "../../../../../public/images/Panel-BG.svg";
-import target from "../../../../../public/images/target.svg";
+import modDetailsBg from "../../../../public/images/Panel-BG.svg";
+import target from "../../../../public/images/target.svg";
 
 interface ModDetailsProps {}
 

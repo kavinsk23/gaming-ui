@@ -3,7 +3,7 @@ import React from "react";
 import StatItem from "./StatItem";
 
 export default {
-  title: "Components/StatItem",
+  title: "Atoms/StatItem",
   component: StatItem,
 } as ComponentMeta<typeof StatItem>;
 

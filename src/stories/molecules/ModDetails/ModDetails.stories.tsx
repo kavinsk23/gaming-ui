@@ -1,7 +1,7 @@
 import ModDetails from "./ModDetails";
 
 const meta: Meta<typeof ModDetails> = {
-  title: "Components/ModDetails",
+  title: "Molecules/ModDetails",
   component: ModDetails,
   parameters: {
     layout: "centered",

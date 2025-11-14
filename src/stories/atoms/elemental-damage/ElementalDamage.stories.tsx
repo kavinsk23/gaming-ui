@@ -1,22 +1,22 @@
-import { ElementalDamage } from './ElementalDamage';
+import { ElementalDamage } from "./ElementalDamage";
 
 const meta: Meta<typeof ElementalDamage> = {
-  title: 'Molecules/ElementalDamage',
+  title: "Atoms/ElementalDamage",
   component: ElementalDamage,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     element: {
-      control: { type: 'select' },
-      options: ['earth', 'fire', 'ice', 'kinetic', 'life', 'lightning'],
+      control: { type: "select" },
+      options: ["earth", "fire", "ice", "kinetic", "life", "lightning"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg', 'xl'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "xl"],
     },
-    onClick: { action: 'clicked' },
+    onClick: { action: "clicked" },
   },
 };
 
@@ -26,8 +26,8 @@ type Story = StoryObj<typeof ElementalDamage>;
 export const Default: Story = {
   args: {
     damage: 451,
-    element: 'fire',
-    size: 'md',
+    element: "fire",
+    size: "md",
   },
 };
 
@@ -73,15 +73,15 @@ export const DifferentDamageValues: Story = {
 export const Interactive: Story = {
   render: () => (
     <div className="flex flex-col gap-4 items-center">
-      <ElementalDamage 
-        damage={451} 
-        element="fire" 
-        onClick={() => console.log('Fire damage clicked!')}
+      <ElementalDamage
+        damage={451}
+        element="fire"
+        onClick={() => console.log("Fire damage clicked!")}
       />
-      <ElementalDamage 
-        damage={451} 
-        element="ice" 
-        onClick={() => console.log('Ice damage clicked!')}
+      <ElementalDamage
+        damage={451}
+        element="ice"
+        onClick={() => console.log("Ice damage clicked!")}
       />
     </div>
   ),
@@ -90,7 +90,9 @@ export const Interactive: Story = {
 export const GridLayout: Story = {
   render: () => (
     <div className="flex flex-col gap-8 items-center p-6">
-      <div className="text-lg font-bold text-white mb-4">Elemental Damage Grid</div>
+      <div className="text-lg font-bold text-white mb-4">
+        Elemental Damage Grid
+      </div>
       <div className="grid grid-cols-2 gap-8">
         <div className="flex flex-col gap-4 items-center">
           <ElementalDamage damage={451} element="fire" />

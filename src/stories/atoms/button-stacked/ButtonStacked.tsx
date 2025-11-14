@@ -1,7 +1,7 @@
 // ButtonStacked.tsx
 import React from "react";
 import { ChevronsUp } from "lucide-react";
-import pattern from "../../../public/images/Pattern.png";
+import pattern from "../../../../public/images/Pattern.png";
 
 /**
  * ButtonStacked component - Gaming-style stacked button with icon and stats

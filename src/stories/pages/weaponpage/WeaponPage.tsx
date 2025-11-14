@@ -12,8 +12,8 @@ import Banner from "../../atoms/banner/Banner";
 import power from "../../../../public/images/Power.svg";
 import RolledStatItem from "../../atoms/rolled-stat-item/RolledStatItem";
 import StatItem from "../../atoms/stat-item/StatItem";
-import Popup from "../../atoms/molecules/popup/Popup";
 import Header from "../../molecules/header/Header";
+import Popup from "../../molecules/popup/Popup";
 
 export interface WeaponPageProps {
   /** Weapon name */

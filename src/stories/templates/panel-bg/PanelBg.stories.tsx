@@ -1,22 +1,22 @@
-import { PanelBg } from './PanelBg';
+import { PanelBg } from "./PanelBg";
 
 const meta: Meta<typeof PanelBg> = {
-  title: 'Components/PanelBg',
+  title: "Templates/PanelBg",
   component: PanelBg,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     width: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg', 'full', 'auto'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "full", "auto"],
     },
     height: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg', 'full', 'auto'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "full", "auto"],
     },
-    onClick: { action: 'clicked' },
+    onClick: { action: "clicked" },
   },
 };
 
@@ -31,8 +31,8 @@ export const Default: Story = {
         <p className="mt-2">This is the content inside the panel background.</p>
       </div>
     ),
-    width: 'md',
-    height: 'md',
+    width: "md",
+    height: "md",
   },
 };
 
@@ -82,7 +82,9 @@ export const FullWidth: Story = {
       <PanelBg width="full" height="auto">
         <div className="p-6 text-white">
           <h3 className="text-lg font-bold">Full Width Panel</h3>
-          <p className="mt-2">This panel stretches to fill its container width.</p>
+          <p className="mt-2">
+            This panel stretches to fill its container width.
+          </p>
         </div>
       </PanelBg>
     </div>
@@ -91,24 +93,24 @@ export const FullWidth: Story = {
 
 export const CustomBackground: Story = {
   args: {
-    backgroundImage: '/custom-bg.svg', // Replace with your actual SVG path
+    backgroundImage: "/custom-bg.svg", // Replace with your actual SVG path
     children: (
       <div className="p-6 text-white">
         <h3 className="text-lg font-bold">Custom Background</h3>
         <p>Using a custom background image.</p>
       </div>
     ),
-    width: 'md',
-    height: 'md',
+    width: "md",
+    height: "md",
   },
 };
 
 export const Interactive: Story = {
   render: () => (
-    <PanelBg 
-      width="md" 
+    <PanelBg
+      width="md"
       height="md"
-      onClick={() => console.log('Panel clicked!')}
+      onClick={() => console.log("Panel clicked!")}
     >
       <div className="p-6 text-white text-center">
         <h3 className="text-lg font-bold">Clickable Panel</h3>

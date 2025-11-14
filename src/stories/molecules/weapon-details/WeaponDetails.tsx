@@ -1,10 +1,10 @@
 import React from "react";
 import { RarityBanner } from "../../templates/rarity-banner/RarityBanner";
-import power from "../../../../../public/images/Power.svg";
-import separatorImage from "../../../../../public/images/SeparatorLine.svg";
+import power from "../../../../public/images/Power.svg";
+import separatorImage from "../../../../public/images/SeparatorLine.svg";
 import RolledStat from "../../atoms/rolled-stat/RolledStat";
-import weaponDetailsBg from "../../../../../public/images/Panel-BG.svg";
-import gun from "../../../../../public/images/gun.svg";
+import weaponDetailsBg from "../../../../public/images/Panel-BG.svg";
+import gun from "../../../../public/images/gun.svg";
 import StatProgressBar from "../stat-progress-bar/StatProgressBar";
 
 interface WeaponDetailsProps {}

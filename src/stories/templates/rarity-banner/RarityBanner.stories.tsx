@@ -1,22 +1,22 @@
-import { RarityBanner } from './RarityBanner';
+import { RarityBanner } from "./RarityBanner";
 
 const meta: Meta<typeof RarityBanner> = {
-  title: 'Components/RarityBanner',
+  title: "Templates/RarityBanner",
   component: RarityBanner,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['primal', 'rare'],
+      control: { type: "select" },
+      options: ["primal", "rare"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg', 'xl'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "xl"],
     },
-    onClick: { action: 'clicked' },
+    onClick: { action: "clicked" },
   },
 };
 
@@ -25,17 +25,17 @@ type Story = StoryObj<typeof RarityBanner>;
 
 export const Primal: Story = {
   args: {
-    variant: 'primal',
-    text: 'PRIMAL',
-    size: 'lg',
+    variant: "primal",
+    text: "PRIMAL",
+    size: "lg",
   },
 };
 
 export const Rare: Story = {
   args: {
-    variant: 'rare',
-    text: 'RARE',
-    size: 'lg',
+    variant: "rare",
+    text: "RARE",
+    size: "lg",
   },
 };
 
@@ -81,17 +81,17 @@ export const DifferentText: Story = {
 export const Interactive: Story = {
   render: () => (
     <div className="flex flex-col gap-4 items-center">
-      <RarityBanner 
-        variant="primal" 
-        text="CLICKABLE PRIMAL" 
+      <RarityBanner
+        variant="primal"
+        text="CLICKABLE PRIMAL"
         size="lg"
-        onClick={() => console.log('Primal banner clicked!')}
+        onClick={() => console.log("Primal banner clicked!")}
       />
-      <RarityBanner 
-        variant="rare" 
-        text="CLICKABLE RARE" 
+      <RarityBanner
+        variant="rare"
+        text="CLICKABLE RARE"
         size="lg"
-        onClick={() => console.log('Rare banner clicked!')}
+        onClick={() => console.log("Rare banner clicked!")}
       />
     </div>
   ),
@@ -107,7 +107,7 @@ export const SizeComparison: Story = {
         <RarityBanner variant="primal" text="LG" size="lg" />
         <RarityBanner variant="primal" text="XL" size="xl" />
       </div>
-      
+
       <div className="text-white text-lg font-bold mb-2 mt-6">Rare Variant</div>
       <div className="flex gap-4 items-end">
         <RarityBanner variant="rare" text="SM" size="sm" />
@@ -122,15 +122,15 @@ export const SizeComparison: Story = {
 export const CustomBackgroundPaths: Story = {
   render: () => (
     <div className="flex flex-col gap-4 items-center">
-      <RarityBanner 
-        variant="primal" 
-        text="CUSTOM PRIMAL" 
+      <RarityBanner
+        variant="primal"
+        text="CUSTOM PRIMAL"
         size="lg"
         // You can override the background by modifying the BACKGROUND_IMAGES constant
       />
-      <RarityBanner 
-        variant="rare" 
-        text="CUSTOM RARE" 
+      <RarityBanner
+        variant="rare"
+        text="CUSTOM RARE"
         size="lg"
         // You can override the background by modifying the BACKGROUND_IMAGES constant
       />
