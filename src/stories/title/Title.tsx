@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Title component with decorative side images
- * 
+ *
  * Features:
  * - Gray background (#D9D9D9)
  * - White top and bottom borders
@@ -13,7 +13,7 @@ export interface TitleProps {
   /** Text content of the title */
   children: React.ReactNode;
   /** Size variant of the title */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** Custom CSS class name */
   className?: string;
   /** Optional click handler */
@@ -28,29 +28,29 @@ export interface TitleProps {
  * Size configuration for consistent title dimensions
  */
 const SIZE_CONFIG = {
-  sm: { container: 'py-2 px-6', text: 'text-lg', image: 'w-32 h-10 flex' },
-  md: { container: 'py-3 px-8', text: 'text-xl', image: 'w-48 h-14 flex' },
-  lg: { container: 'py-4 px-10', text: 'text-2xl', image: 'w-56 h-16 flex' },
+  sm: { container: "py-0.5 px-6", text: "text-md", image: "w-32 h-10 flex" },
+  md: { container: "py-3 px-8", text: "text-xl", image: "w-48 h-14 flex" },
+  lg: { container: "py-4 px-10", text: "text-2xl", image: "w-56 h-16 flex" },
 } as const;
 
 /**
  * Default decorative images (you can replace these paths)
  */
 const DEFAULT_IMAGES = {
-  left: '/images/Left.png',
-  right: '/images/Right.png',
+  left: "/images/Left.png",
+  right: "/images/Right.png",
 };
 
 /**
  * Title Component
- * 
+ *
  * Gaming-style title with decorative side images and bordered design.
  * Perfect for section headers, mod titles, and feature labels.
  */
 export const Title: React.FC<TitleProps> = ({
   children,
-  size = 'md',
-  className = '',
+  size = "md",
+  className = "",
   onClick,
   leftImage = DEFAULT_IMAGES.left,
   rightImage = DEFAULT_IMAGES.right,
@@ -61,24 +61,29 @@ export const Title: React.FC<TitleProps> = ({
     <div
       className={`
         relative
-        border-t-2
-        border-b-2
+        border-t
+        border-b
         border-white
         flex
         items-center
         justify-center
         ${sizeClasses.container}
-        ${onClick ? 'cursor-pointer hover:bg-gray-300 transition-colors duration-200' : ''}
+        ${
+          onClick
+            ? "cursor-pointer hover:bg-gray-300 transition-colors duration-200"
+            : ""
+        }
         ${className}
       `}
-style={{
-  background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(58, 58, 58, 0.8) 20%, #3A3A3A 40%, #3A3A3A 60%, rgba(58, 58, 58, 0.8) 80%, rgba(0, 0, 0, 0.3) 100%)'
-}}
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(58, 58, 58, 0.8) 20%, #3A3A3A 40%, #3A3A3A 60%, rgba(58, 58, 58, 0.8) 80%, rgba(0, 0, 0, 0.3) 100%)",
+      }}
       onClick={onClick}
     >
       {/* Left decorative image */}
-      <div className="absolute left-0 top-0 bottom-0 flex items-center">
-        <img 
+      <div className="absolute top-0 bottom-0 left-0 flex items-center">
+        <img
           src={leftImage}
           alt=""
           className={`
@@ -90,8 +95,8 @@ style={{
       </div>
 
       {/* Right decorative image */}
-      <div className="absolute right-0 top-0 bottom-0 flex items-center">
-        <img 
+      <div className="absolute top-0 bottom-0 right-0 flex items-center">
+        <img
           src={rightImage}
           alt=""
           className={`
@@ -103,7 +108,8 @@ style={{
       </div>
 
       {/* Title text */}
-      <h2 className={`
+      <h2
+        className={`
         font-bold
         text-white
         text-center
@@ -112,7 +118,8 @@ style={{
         relative
         z-10
         ${sizeClasses.text}
-      `}>
+      `}
+      >
         {children}
       </h2>
     </div>

@@ -9,6 +9,7 @@ import PanelBgLight from "../../panel-bg-light/PanelBgLight";
 import { RefreshCcw, Zap } from "lucide-react";
 import StatProgressBar from "../../stat-progress-bar/StatProgressBar";
 import Banner from "../../banner/Banner";
+import power from "../../../../public/images/Power.svg";
 
 export interface WeaponPageProps {
   /** Weapon name */
@@ -47,24 +48,24 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
       {/* Main Content Layout */}
       <div className="relative min-h-screen p-8">
         {/* Top Left Corner - Weapon Info */}
-        <div className="absolute top-8 left-8 z-20">
+        <div className="absolute z-20 top-8 left-8">
           {/* Big Text and Sub Text */}
           <div className="mb-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-wide mb-2">
+            <h1 className="mb-2 text-4xl font-bold tracking-wide text-white uppercase md:text-5xl">
               {name}
             </h1>
-            <p className="text-md text-gray-300 uppercase">{type}</p>
+            <p className="text-gray-300 uppercase text-md">{type}</p>
           </div>
 
           {/* Power Level with Icon */}
-          <div className="mb-4 mt-8">
+          <div className="mt-8 mb-4">
             <div className="flex items-center gap-2 mb-1">
               <ElementIcon element="earth" size="sm" />
               <span className="text-2xl font-bold text-white">
                 {powerLevel}
               </span>
             </div>
-            <p className="text-md text-gray-300 uppercase">{anchorStat}</p>
+            <p className="text-gray-300 uppercase text-md">{anchorStat}</p>
           </div>
 
           {/* Elemental Damage */}
@@ -84,63 +85,71 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
           </div>
 
           {/* Vertical Data Sets - 3 sets */}
-          <div className="space-y-4 mt-10">
+          <div className="mt-10 space-y-4">
             {/* RELOAD */}
-            <div className="flex items-center justify-between w-40 flex-col">
-              <span className="text-gray-400 text-sm uppercase">RELOAD</span>
+            <div className="flex flex-col items-center justify-between w-40">
+              <span className="text-sm text-gray-400 uppercase">RELOAD</span>
               <div className="text-right">
-                <div className="text-white font-bold text-xl">527</div>
-                <div className="text-green-400 text-sm">(+27%)</div>
+                <div className="text-xl font-bold text-white">527</div>
+                <div className="text-sm text-green-400">(+27%)</div>
               </div>
             </div>
 
             {/* FIRE RATE */}
-            <div className="flex items-center justify-between w-40 flex-col">
-              <span className="text-gray-400 text-sm uppercase">FIRE RATE</span>
+            <div className="flex flex-col items-center justify-between w-40">
+              <span className="text-sm text-gray-400 uppercase">FIRE RATE</span>
               <div className="text-right">
-                <div className="text-white font-bold text-xl">527</div>
-                <div className="text-red-400 text-sm">(-13%)</div>
+                <div className="text-xl font-bold text-white">527</div>
+                <div className="text-sm text-red-400">(-13%)</div>
               </div>
             </div>
 
             {/* MAG SIZE */}
-            <div className="flex items-center justify-between w-40 flex-col">
-              <span className="text-gray-400 text-sm uppercase">MAG SIZE</span>
+            <div className="flex flex-col items-center justify-between w-40">
+              <span className="text-sm text-gray-400 uppercase">MAG SIZE</span>
               <div className="text-right">
-                <div className="text-white font-bold text-xl">527</div>
-                <div className="text-gray-400 text-sm">(+0%)</div>
+                <div className="text-xl font-bold text-white">527</div>
+                <div className="text-sm text-gray-400">(+0%)</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Left Corner - Back Button */}
-        <div className="absolute bottom-8 left-8 z-20">
-          <button className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 uppercase tracking-wide flex items-center gap-2">
-            <span>←</span>
-            BACK
-          </button>
+        <div className="absolute z-20 bottom-8 left-8">
+          <div className="inline-flex items-center justify-center bg-transparent">
+            <div className="flex items-center justify-center w-10 h-10 mr-2 font-bold text-black bg-gray-300 rounded-lg text-md">
+              ESC
+            </div>
+            <div className="flex items-center justify-center text-xl font-bold text-white">
+              BACK
+            </div>
+          </div>
         </div>
 
         {/* Center - Weapon Image */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+        <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
           <div className="flex items-center justify-center overflow-hidden">
             <img
               src="/images/HumanTech-Assaullt-RiflView-3D.svg"
               alt="Weapon display"
-              className="w-full h-full object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
         </div>
 
-        <div className="fixed bottom-64 left-1/2 transform -translate-x-1/2 w-80">
+        <div className="fixed transform -translate-x-1/2 bottom-56 left-1/2 w-80">
           <div className="flex flex-col gap-4">
             {/* First column - Number, icon and power */}
-            <div className="flex items-center gap-3 justify-center">
-              <div className="text-white text-4xl font-bold">731</div>
-              <div className="flex flex-col">
-                <Zap className="text-white w-6 h-6" />
-                <div className="text-white text-sm opacity-50">POWER</div>
+            <div className="flex items-center justify-center gap-3">
+              <div className="text-4xl font-bold text-white">731</div>
+              <div className="flex flex-col justify-center">
+                <img
+                  src={power}
+                  alt="Power Icon"
+                  className="w-10 h-10 mx-auto text-white"
+                />
+                <div className="text-sm text-white opacity-50">POWER</div>
               </div>
             </div>
 
@@ -151,17 +160,17 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
           </div>
         </div>
         {/* Bottom Layer - Tiles Section */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-6xl">
+        <div className="absolute z-20 w-full max-w-6xl transform -translate-x-1/2 bottom-8 left-1/2">
           <PanelBgLight
             width="full"
             height="auto"
-            className="p-8"
+            className="px-8 py-2"
             borderColor="#878787"
             borderThickness="md"
           >
             <div className="flex justify-center gap-6">
               {/* First Part - Title + 5 Tiles */}
-              <div className="flex gap-6 flex-col items-center">
+              <div className="flex flex-col items-center gap-6">
                 {/* Title Column */}
                 <div className="flex items-center h-full">
                   <Title size="sm">ENTANCE</Title>
@@ -178,7 +187,7 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
               </div>
 
               {/* Second Part - Title + 1 Tile */}
-              <div className="flex gap-6 flex-col items-center">
+              <div className="flex flex-col items-center gap-6">
                 {/* Title Column */}
                 <div className="flex items-center h-full">
                   <Title size="sm">ENHANCED</Title>
@@ -191,7 +200,7 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
               </div>
 
               {/* Third Part - Title + 5 Tiles */}
-              <div className="flex gap-6 flex-col items-center">
+              <div className="flex flex-col items-center gap-6">
                 {/* Title Column */}
                 <div className="flex items-center h-full">
                   <Title size="sm">CATALYSTS</Title>
@@ -210,7 +219,7 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
           </PanelBgLight>
         </div>
 
-        <div className="absolute top-8 right-8 z-20">
+        <div className="absolute z-20 top-8 right-8">
           {/* Top Stats Section */}
           <div className="flex">
             <div className="flex flex-col gap-0 w-[500px]">
@@ -280,7 +289,7 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
               <div className="text-red-400">-8%</div>
 
               <div className="text-white">ROLLED STAT NAME</div>
-              <div className="flex items-center gap-2 text-red-400 justify-between">
+              <div className="flex items-center justify-between gap-2 text-red-400">
                 -5%
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
               </div>
@@ -292,7 +301,7 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
         </div>
 
         {/* Right Side - Stats and Buttons */}
-        <div className="absolute bottom-72 right-8 z-20">
+        <div className="absolute z-20 bottom-72 right-8">
           {/* Bottom Right - Stacked Buttons */}
           <div className="space-y-4">
             <ButtonStacked
