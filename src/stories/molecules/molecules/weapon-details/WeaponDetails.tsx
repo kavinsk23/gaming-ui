@@ -4,7 +4,7 @@ import power from "../../../../../public/images/Power.svg";
 import separatorImage from "../../../../../public/images/SeparatorLine.svg";
 import RolledStat from "../../../rolled-stat/RolledStat";
 import weaponDetailsBg from "../../../../../public/images/Panel-BG.svg";
-import target from "../../../../../public/images/target.svg";
+import gun from "../../../../../public/images/gun.svg";
 import StatProgressBar from "../../../stat-progress-bar/StatProgressBar";
 
 interface WeaponDetailsProps {}
@@ -36,9 +36,9 @@ const WeaponDetails: React.FC<WeaponDetailsProps> = ({}) => {
         </div>
 
         {/* Right corner image */}
-        {target && (
-          <div className="absolute z-20 flex items-center w-8 h-full pb-3 my-auto transform -translate-y-1/2 top-1/2 right-6">
-            <img src={target} alt="Weapon" className="object-contain" />
+        {gun && (
+          <div className="absolute z-20 flex items-center w-24 h-full pb-3 my-auto transform -translate-y-1/2 top-1/2 right-6">
+            <img src={gun} alt="Weapon" className="object-contain" />
           </div>
         )}
       </div>

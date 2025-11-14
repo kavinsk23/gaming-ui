@@ -14,6 +14,11 @@ import RolledStatItem from "../../rolled-stat-item/RolledStatItem";
 import StatItem from "../../stat-item/StatItem";
 import Popup from "../../molecules/popup/Popup";
 import Header from "../../molecules/header/Header";
+import ModDetails from "../../molecules/molecules/ModDetails/ModDetails";
+import WeaponDetails from "../../molecules/molecules/weapon-details/WeaponDetails";
+import ButtonLong from "../../button-long/ButtonLong";
+import ButtonBasic from "../../button-basic/ButtonBasic";
+import { CatalystMods } from "../../molecules/catalyst-mods/CatalystMods";
 
 export interface AttachmentPageProps {
   /** Weapon name */
@@ -64,12 +69,12 @@ export const AttachmentPage: React.FC<AttachmentPageProps> = ({
   };
 
   return (
-    <>
+    <div className="overflow-hidden">
       <WeaponPageTemplate
         backgroundImage="/images/weapon-bg.png"
         blurIntensity="xl"
         overlayOpacity={60}
-        className={className}
+        className={`${className} overflow-hidden`}
       >
         <div>
           <Header
@@ -78,7 +83,7 @@ export const AttachmentPage: React.FC<AttachmentPageProps> = ({
           />
         </div>
         {/* Main Content Layout */}
-        <div className="relative min-h-screen p-8">
+        <div className="relative h-screen p-8 overflow-hidden">
           {/* Blur Layer - Applied when popup is visible */}
           {isPopupVisible && (
             <div
@@ -86,6 +91,31 @@ export const AttachmentPage: React.FC<AttachmentPageProps> = ({
               style={{ backdropFilter: "blur(14.600000381469727px)" }}
             />
           )}
+
+          {/* Top Right Corner - ModDetails and WeaponDetails */}
+          <div className="absolute top-8 right-4 z-20 flex gap-4">
+            <div>
+              <ModDetails />
+              <div className="flex flex-col mt-3 gap-4 items-center">
+                <ButtonLong
+                  mainText="ENHANCE"
+                  stats={[5, 12, 32]}
+                  variant="default"
+                />
+                <ButtonLong
+                  mainText="ENHANCE"
+                  stats={[5, 12, 32]}
+                  variant="highlighted"
+                />
+              </div>
+            </div>
+            <div className="gap-3 flex flex-col">
+              <WeaponDetails />
+              <ButtonBasic variant="highlighted" className="w-56" size="sm">
+                DETACH
+              </ButtonBasic>
+            </div>
+          </div>
 
           {/* Center - Weapon Image */}
           <div className="absolute bottom-[-18%] w-full left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
@@ -97,6 +127,37 @@ export const AttachmentPage: React.FC<AttachmentPageProps> = ({
               />
             </div>
           </div>
+          <div className="absolute left-4 h-[90%]">
+            <CatalystMods />
+          </div>
+        </div>
+        {/* Bottom Layer - Tiles Section */}
+        <div className="absolute z-20 w-full max-w-md transform -translate-x-1/2 bottom-16 left-1/2">
+          <PanelBgLight
+            width="full"
+            height="auto"
+            className="px-8 py-2"
+            borderColor="#878787"
+            borderThickness="md"
+          >
+            <div className="flex justify-center gap-6">
+              {/* Third Part - Title + 5 Tiles */}
+              <div className="flex flex-col items-center gap-6">
+                {/* Title Column */}
+                <div className="flex items-center h-full">
+                  <Title size="sm">CATALYSTS</Title>
+                </div>
+
+                {/* Tiles Column */}
+                <div className="flex gap-2">
+                  <Tile size="sm" variant="empty" />
+                  <Tile size="sm" variant="empty" />
+                  <Tile size="sm" variant="empty" />
+                  <Tile size="sm" variant="empty" />
+                </div>
+              </div>
+            </div>
+          </PanelBgLight>
         </div>
       </WeaponPageTemplate>
 
@@ -117,7 +178,7 @@ export const AttachmentPage: React.FC<AttachmentPageProps> = ({
           onReplace={handlePopupReplace}
         />
       )}
-    </>
+    </div>
   );
 };
 
