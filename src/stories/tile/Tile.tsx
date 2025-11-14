@@ -11,6 +11,7 @@ import React from "react";
  * - Background pattern for empty variant
  * - Corner indicators for selected variant
  * - Lock icon for locked variant
+ * - Gradient overlay for selected variant
  */
 export interface TileProps {
   /** Size variant of the tile */
@@ -35,6 +36,10 @@ export interface TileProps {
   cornerColor?: string;
   /** Lock icon source */
   lockIcon?: string;
+  /** Border color for all variants */
+  borderColor?: string;
+  /** Gradient color for selected variant */
+  gradientColor?: string;
 }
 
 /**
@@ -86,6 +91,14 @@ const DEFAULT_CORNER_COLOR = "#878787";
  * Default lock icon
  */
 const DEFAULT_LOCK_ICON = "/icons/custom-lock.svg";
+/**
+ * Default border color
+ */
+const DEFAULT_BORDER_COLOR = "#878787";
+/**
+ * Default gradient color for selected tiles
+ */
+const DEFAULT_GRADIENT_COLOR = "rgba(255, 255, 255, 0.5)";
 
 /**
  * Corner Component for selected variant
@@ -108,7 +121,6 @@ const Corner: React.FC<{
         absolute
         ${positionClasses[position]}
         ${size}
-        border-[#878787]
       `}
       style={{
         borderColor: color,
@@ -134,6 +146,18 @@ const LockIcon: React.FC<{ icon: string; size: string }> = ({ icon, size }) => (
 );
 
 /**
+ * Gradient Overlay Component for selected variant
+ */
+const GradientOverlay: React.FC<{ color: string }> = ({ color }) => (
+  <div
+    className="absolute inset-0 pointer-events-none"
+    style={{
+      background: `radial-gradient(50% 50% at 50% 50%, ${color} 0%, rgba(255, 255, 255, 0) 100%)`,
+    }}
+  />
+);
+
+/**
  * Tile Component
  *
  * Square tile with empty, filled, selected, and locked variants.
@@ -150,17 +174,18 @@ export const Tile: React.FC<TileProps> = ({
   emptyBackground = DEFAULT_EMPTY_BG,
   cornerColor = DEFAULT_CORNER_COLOR,
   lockIcon = DEFAULT_LOCK_ICON,
+  borderColor = DEFAULT_BORDER_COLOR,
+  gradientColor = DEFAULT_GRADIENT_COLOR,
 }) => {
   const sizeClasses = SIZE_CONFIG[size];
   const borderClass = BORDER_CONFIG[topBorderThickness];
 
-  // Selected variant - has corner indicators
+  // Selected variant - has corner indicators and gradient overlay
   if (variant === "selected") {
     return (
       <div
         className={`
           border
-          border-[#878787]
           bg-transparent
           relative
           ${sizeClasses.container}
@@ -177,9 +202,13 @@ export const Tile: React.FC<TileProps> = ({
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          borderColor: borderColor,
         }}
         onClick={onClick}
       >
+        {/* Gradient overlay */}
+        <GradientOverlay color={gradientColor} />
+
         {/* Corner indicators */}
         <Corner
           position="top-left"
@@ -211,7 +240,6 @@ export const Tile: React.FC<TileProps> = ({
       <div
         className={`
           border
-          border-[#878787]
           bg-transparent
           relative
           ${sizeClasses.container}
@@ -228,6 +256,7 @@ export const Tile: React.FC<TileProps> = ({
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          borderColor: borderColor,
         }}
         onClick={onClick}
       >
@@ -243,7 +272,6 @@ export const Tile: React.FC<TileProps> = ({
       <div
         className={`
           border
-          border-[#878787]
           bg-transparent
           relative
           ${sizeClasses.container}
@@ -260,6 +288,7 @@ export const Tile: React.FC<TileProps> = ({
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          borderColor: borderColor,
         }}
         onClick={onClick}
       />
@@ -271,9 +300,7 @@ export const Tile: React.FC<TileProps> = ({
     <div
       className={`
         border
-        border-[#878787]
         ${borderClass}
-        border-t-[#878787]
         bg-transparent
         relative
         overflow-hidden
@@ -284,6 +311,9 @@ export const Tile: React.FC<TileProps> = ({
         }
         ${className}
       `}
+      style={{
+        borderColor: borderColor,
+      }}
       onClick={onClick}
     >
       {/* Image/SVG content */}
@@ -311,17 +341,18 @@ export const PixelTile: React.FC<
   emptyBackground = DEFAULT_EMPTY_BG,
   cornerColor = DEFAULT_CORNER_COLOR,
   lockIcon = DEFAULT_LOCK_ICON,
+  borderColor = DEFAULT_BORDER_COLOR,
+  gradientColor = DEFAULT_GRADIENT_COLOR,
 }) => {
   const sizeClasses = PIXEL_SIZE_CONFIG[size];
   const borderClass = BORDER_CONFIG[topBorderThickness];
 
-  // Selected variant - has corner indicators
+  // Selected variant - has corner indicators and gradient overlay
   if (variant === "selected") {
     return (
       <div
         className={`
           border
-          border-[#878787]
           bg-transparent
           relative
           ${sizeClasses.container}
@@ -338,9 +369,13 @@ export const PixelTile: React.FC<
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          borderColor: borderColor,
         }}
         onClick={onClick}
       >
+        {/* Gradient overlay */}
+        <GradientOverlay color={gradientColor} />
+
         {/* Corner indicators */}
         <Corner
           position="top-left"
@@ -372,7 +407,6 @@ export const PixelTile: React.FC<
       <div
         className={`
           border
-          border-[#878787]
           bg-transparent
           relative
           ${sizeClasses.container}
@@ -389,6 +423,7 @@ export const PixelTile: React.FC<
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          borderColor: borderColor,
         }}
         onClick={onClick}
       >
@@ -404,7 +439,6 @@ export const PixelTile: React.FC<
       <div
         className={`
           border
-          border-[#878787]
           bg-transparent
           relative
           ${sizeClasses.container}
@@ -421,6 +455,7 @@ export const PixelTile: React.FC<
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          borderColor: borderColor,
         }}
         onClick={onClick}
       />
@@ -432,9 +467,7 @@ export const PixelTile: React.FC<
     <div
       className={`
         border
-        border-[#878787]
         ${borderClass}
-        border-t-[#878787]
         bg-transparent
         relative
         overflow-hidden
@@ -445,6 +478,9 @@ export const PixelTile: React.FC<
         }
         ${className}
       `}
+      style={{
+        borderColor: borderColor,
+      }}
       onClick={onClick}
     >
       {/* Image/SVG content */}
