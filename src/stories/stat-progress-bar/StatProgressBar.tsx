@@ -82,10 +82,9 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
       onClick={onClick}
     >
       {/* Left section: Stat name and value */}
-      <div className="flex items-center gap-3 justify-start">
+      <div className="flex items-center justify-start gap-3">
         <span
           className={`
-          font-bold
           text-white
           text-base
           whitespace-nowrap
@@ -111,7 +110,7 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
       <div className="flex items-center justify-center">
         {/* Multi-color progress bar container */}
         <div className="w-[200px] h-2 bg-[#414141] overflow-hidden mx-3">
-          <div className="flex h-full w-full">
+          <div className="flex w-full h-full">
             {effectiveSegments.map((segment, index) => (
               <div
                 key={index}

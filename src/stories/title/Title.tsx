@@ -110,7 +110,6 @@ export const Title: React.FC<TitleProps> = ({
       {/* Title text */}
       <h2
         className={`
-        font-bold
         text-white
         text-center
         uppercase
