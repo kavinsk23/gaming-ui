@@ -154,22 +154,21 @@ export const ButtonStacked: React.FC<ButtonStackedProps> = ({
       />
 
       {/* Background image layer */}
-      <div className="absolute inset-0 flex items-center justify-center z-0">
+      <div className="absolute inset-0 z-0 flex items-center justify-center">
         <img
           src={pattern}
           alt={alt}
-          className="w-full h-full object-cover opacity-70"
+          className="object-cover w-full h-full opacity-70"
         />
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center gap-2 w-full">
+      <div className="relative z-10 flex flex-col items-center w-full gap-2">
         {/* First row: Icon + Main text */}
         <div className="flex items-center gap-2 mr-auto">
           {renderTopIcon()}
           <span
             className={`
-            font-bold
             text-white
             uppercase
             tracking-wide
@@ -209,7 +208,7 @@ export const ButtonStacked: React.FC<ButtonStackedProps> = ({
 
       {/* Lock overlay for locked variant */}
       {isLocked && (
-        <div className="absolute inset-0 flex items-center justify-center z-0">
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
           {/* Empty - background image will show through */}
         </div>
       )}
