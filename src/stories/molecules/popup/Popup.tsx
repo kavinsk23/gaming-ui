@@ -9,7 +9,7 @@ import icon3 from "../../../../public/icons/image-42.svg";
 interface PopupProps {
   onCancel: () => void;
   onReplace: () => void;
-  variant?: "default" | "warning" | "enhance";
+  variant?: "default" | "warning" | "enhance" | "single";
   title?: string;
   description?: string;
   cancelText?: string;
@@ -20,6 +20,8 @@ interface PopupProps {
     resource2?: number;
     resource3?: number;
   };
+  /** OK button text for single variant */
+  okText?: string;
 }
 
 const Popup: React.FC<PopupProps> = ({
@@ -31,6 +33,7 @@ const Popup: React.FC<PopupProps> = ({
   cancelText = "CANCEL",
   replaceText = "REPLACE",
   resources = { resource1: +5, resource2: +12, resource3: +32 },
+  okText = "OK",
 }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -92,16 +95,26 @@ const Popup: React.FC<PopupProps> = ({
           )}
 
           <div className="flex justify-center mt-4 space-x-3">
-            <ButtonBasic variant="default" size="sm" onClick={onCancel}>
-              {cancelText}
-            </ButtonBasic>
-            <ButtonBasic
-              variant={variant === "warning" ? "highlighted" : "highlighted"}
-              size="sm"
-              onClick={onReplace}
-            >
-              {replaceText}
-            </ButtonBasic>
+            {variant === "single" ? (
+              <ButtonBasic variant="default" size="sm" onClick={onReplace}>
+                {okText}
+              </ButtonBasic>
+            ) : (
+              <>
+                <ButtonBasic variant="default" size="sm" onClick={onCancel}>
+                  {cancelText}
+                </ButtonBasic>
+                <ButtonBasic
+                  variant={
+                    variant === "warning" ? "highlighted" : "highlighted"
+                  }
+                  size="sm"
+                  onClick={onReplace}
+                >
+                  {replaceText}
+                </ButtonBasic>
+              </>
+            )}
           </div>
         </div>
       </div>

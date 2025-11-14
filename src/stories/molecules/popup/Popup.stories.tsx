@@ -40,3 +40,13 @@ Enhance.args = {
   onCancel: () => console.log("Cancel button clicked"),
   onReplace: () => console.log("Enhance button clicked"),
 };
+
+export const Single = Template.bind({});
+Single.args = {
+  variant: "single",
+  title: "OPERATION COMPLETED SUCCESSFULLY!",
+  description: "Your item has been enhanced. All resources have been consumed.",
+  okText: "OK",
+  onCancel: () => console.log("Cancel button clicked"),
+  onReplace: () => console.log("OK button clicked"),
+};
