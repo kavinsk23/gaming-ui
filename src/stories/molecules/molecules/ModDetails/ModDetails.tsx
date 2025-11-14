@@ -10,7 +10,7 @@ interface ModDetailsProps {}
 
 const ModDetails: React.FC<ModDetailsProps> = ({}) => {
   return (
-    <div className="relative flex flex-col w-full max-w-4xl border-2 border-[#1669AD]">
+    <div className="relative flex flex-col w-full h-min max-w-4xl border-2 border-[#1669AD]">
       {/* Background Image Layer */}
       <img
         src={modDetailsBg}

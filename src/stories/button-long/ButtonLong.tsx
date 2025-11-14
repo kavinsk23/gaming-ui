@@ -1,11 +1,11 @@
 // ButtonLong.tsx
-import React from 'react';
-import { ChevronsUp, Zap } from 'lucide-react';
-import pattern from "../../../public/images/Pattern.png"
+import React from "react";
+import { ChevronsUp, Zap } from "lucide-react";
+import pattern from "../../../public/images/Pattern.png";
 
 /**
  * ButtonLong component - Gaming-style stacked button with icon and stats
- * 
+ *
  * Features:
  * - Black background with fixed image layer
  * - Stacked layout with icon and text
@@ -18,9 +18,9 @@ export interface ButtonLongProps {
   /** Array of stat numbers [left, middle, right] */
   stats: [number, number, number];
   /** Button state variant */
-  variant?: 'default' | 'highlighted' | 'locked';
+  variant?: "default" | "highlighted" | "locked";
   /** Size variant of the button */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** Custom CSS class name */
   className?: string;
   /** Optional click handler */
@@ -37,23 +37,23 @@ export interface ButtonLongProps {
  * Size configuration for consistent button dimensions
  */
 const SIZE_CONFIG = {
-  sm: { 
-    container: 'py-3 px-6', 
-    mainText: 'text-sm',
-    stats: 'text-xs',
-    icon: 'w-4 h-4'
+  sm: {
+    container: "py-3 px-6",
+    mainText: "text-sm",
+    stats: "text-xs",
+    icon: "w-4 h-4",
   },
-  md: { 
-    container: 'p-4', 
-    mainText: 'text-base',
-    stats: 'text-sm',
-    icon: 'w-5 h-5'
+  md: {
+    container: "p-4",
+    mainText: "text-base",
+    stats: "text-sm",
+    icon: "w-5 h-5",
   },
-  lg: { 
-    container: 'py-5 px-10', 
-    mainText: 'text-lg',
-    stats: 'text-base',
-    icon: 'w-6 h-6'
+  lg: {
+    container: "py-5 px-10",
+    mainText: "text-lg",
+    stats: "text-base",
+    icon: "w-6 h-6",
   },
 } as const;
 
@@ -61,28 +61,28 @@ const SIZE_CONFIG = {
  * Default stat icons
  */
 const DEFAULT_STAT_ICONS: [string, string, string] = [
-  '/icons/image-40.svg',
-  '/icons/image-41.svg',
-  '/icons/image-42.svg',
+  "/icons/image-40.svg",
+  "/icons/image-41.svg",
+  "/icons/image-42.svg",
 ];
 
 /**
  * ButtonLong Component
- * 
+ *
  * Gaming-style stacked button with icon, main text, and stat indicators.
  */
 export const ButtonLong: React.FC<ButtonLongProps> = ({
   mainText,
   stats,
-  variant = 'default',
-  size = 'md',
-  className = '',
+  variant = "default",
+  size = "md",
+  className = "",
   onClick,
   statIcons = DEFAULT_STAT_ICONS,
-  alt = 'Button background',
+  alt = "Button background",
 }) => {
   const sizeClasses = SIZE_CONFIG[size];
-  const isLocked = variant === 'locked';
+  const isLocked = variant === "locked";
 
   return (
     <button
@@ -90,29 +90,34 @@ export const ButtonLong: React.FC<ButtonLongProps> = ({
         relative
         bg-black
         flex
-        w-[374px]
+        w-full
         flex-row
         items-center
         justify-center
         ${sizeClasses.container}
-        ${!isLocked ? 'cursor-pointer hover:opacity-90 transition-opacity duration-200' : ''}
-        ${variant === 'highlighted' ? 'border-r-[3px] border-b-white' : ''}
+        ${
+          !isLocked
+            ? "cursor-pointer hover:opacity-90 transition-opacity duration-200"
+            : ""
+        }
+        ${variant === "highlighted" ? "border-r-[3px] border-b-white" : ""}
         ${className}
       `}
       onClick={!isLocked ? onClick : undefined}
       disabled={isLocked}
     >
       {/* Radial gradient for half oval with soft fade edges */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
-          background: 'radial-gradient(ellipse at right center, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.15) 50%, transparent 75%)'
+          background:
+            "radial-gradient(ellipse at right center, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.15) 50%, transparent 75%)",
         }}
       />
 
       {/* Background image layer */}
       <div className="absolute inset-0 flex items-center justify-center z-0">
-        <img 
+        <img
           src={pattern}
           alt={alt}
           className="w-full h-full object-cover opacity-70"
@@ -123,45 +128,51 @@ export const ButtonLong: React.FC<ButtonLongProps> = ({
       <div className="relative z-10 flex flex-row items-center justify-between gap-2 w-full">
         {/* First row: Icon + Main text */}
         <div className="flex items-center gap-2 mr-auto">
-          <ChevronsUp className={`
+          <ChevronsUp
+            className={`
             ${sizeClasses.icon}
-            ${variant === 'highlighted' ? '' : 'text-white'}
-            ${isLocked ? 'text-[#FE6163]' : 'text-white'}
-          `} />
-          <span className={`
+            ${variant === "highlighted" ? "" : "text-white"}
+            ${isLocked ? "text-[#FE6163]" : "text-white"}
+          `}
+          />
+          <span
+            className={`
             font-bold
             text-white
             uppercase
             tracking-wide
             ${sizeClasses.mainText}
-            ${isLocked ? 'text-[#FE6163]' : ''}
-          `}>
+            ${isLocked ? "text-[#FE6163]" : ""}
+          `}
+          >
             {mainText}
           </span>
         </div>
 
-<div className="flex items-center justify-center gap-4 ml-auto">
-  {stats.map((stat, index) => (
-    <div key={index} className="flex items-center gap-1">
-      <img 
-        src={statIcons[index]}
-        alt={`Stat ${index + 1}`}
-        className={`
+        <div className="flex items-center justify-center gap-4 ml-auto">
+          {stats.map((stat, index) => (
+            <div key={index} className="flex items-center gap-1">
+              <img
+                src={statIcons[index]}
+                alt={`Stat ${index + 1}`}
+                className={`
           ${sizeClasses.icon}
           opacity-80
         `}
-      />
-      <span className={`
+              />
+              <span
+                className={`
         font-mono
-        ${isLocked && index === 1 ? 'text-[#FE6163]' : 'text-white'}
+        ${isLocked && index === 1 ? "text-[#FE6163]" : "text-white"}
         ${sizeClasses.stats}
-        ${isLocked && index !== 1 ? 'text-white' : ''}
-      `}>
-        {stat}
-      </span>
-    </div>
-  ))}
-</div>
+        ${isLocked && index !== 1 ? "text-white" : ""}
+      `}
+              >
+                {stat}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Lock overlay for locked variant - EMPTY NOW, JUST KEEPING THE STRUCTURE */}

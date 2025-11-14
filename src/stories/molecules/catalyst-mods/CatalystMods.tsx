@@ -298,33 +298,48 @@ export const CatalystMods: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full p-6 w-[580px] max-w-[580px] bg-gray-900">
-      {/* Header Section with Title and Search */}
-      <div className="flex-shrink-0 mb-6">
-        {/* Title */}
-        <Title size="sm" className="mb-4">
-          CATALYST MODS
-        </Title>
-      </div>
+    <div className="flex flex-col p-6 w-[440px] h-full max-w-[580px] bg-gray-900 relative overflow-hidden">
+      {/* Background Image - Fixed */}
+      <div
+        className="absolute inset-0 z-0 bg-black"
+        style={{
+          backgroundImage: "url('/images/Panel-BG.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+        }}
+      />
 
-      {/* Scrollable Grid Section */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="grid grid-cols-4 gap-4">
-          {tileConfigs.map((tile) => (
-            <Tile
-              key={tile.id}
-              variant={tile.variant}
-              size="lg" // All tiles same size
-              onClick={() => handleTileClick(tile.id)}
-              hoverEffect={true}
-              borderColor={tile.borderColor}
-              image={tile.image}
-              alt={tile.alt}
-              cornerColor={tile.cornerColor}
-              gradientColor={tile.gradientColor}
-              className="transition-all duration-200 hover:scale-105"
-            />
-          ))}
+      {/* Content with fixed scroll area */}
+      <div className="relative z-10 h-full flex flex-col">
+        {/* Header Section with Title and Search */}
+        <div className="flex-shrink-0 mb-6">
+          {/* Title */}
+          <Title size="sm" className="mb-4">
+            CATALYST MODS
+          </Title>
+        </div>
+
+        {/* Scrollable Grid Section - Fixed height */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="grid grid-cols-4 gap-4 pb-4">
+            {tileConfigs.map((tile) => (
+              <Tile
+                key={tile.id}
+                variant={tile.variant}
+                size="sm"
+                onClick={() => handleTileClick(tile.id)}
+                hoverEffect={true}
+                borderColor={tile.borderColor}
+                image={tile.image}
+                alt={tile.alt}
+                cornerColor={tile.cornerColor}
+                gradientColor={tile.gradientColor}
+                className="transition-all duration-200 hover:scale-105"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
