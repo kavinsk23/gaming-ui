@@ -1,0 +1,37 @@
+<svg width="572" height="1" viewBox="0 0 572 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g style="mix-blend-mode:screen" opacity="0.5">
+<mask id="mask0_180_29307" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="572" height="1">
+<rect width="572" height="1" fill="url(#paint0_linear_180_29307)"/>
+</mask>
+<g mask="url(#mask0_180_29307)">
+<g filter="url(#filter0_nf_180_29307)">
+<rect width="600" height="49" transform="matrix(1 0 0 -1 -14 25)" fill="white"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_nf_180_29307" x="-30" y="-40" width="632" height="81" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.015625 0.015625" stitchTiles="stitch" numOctaves="3" result="noise" seed="2626" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="#000000" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect1_noise_180_29307">
+<feMergeNode in="shape" />
+<feMergeNode in="color1" />
+</feMerge>
+<feGaussianBlur stdDeviation="8" result="effect2_foregroundBlur_180_29307"/>
+</filter>
+<linearGradient id="paint0_linear_180_29307" x1="0" y1="0.5" x2="572" y2="0.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0"/>
+<stop offset="0.25" stop-color="white"/>
+<stop offset="0.75" stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
