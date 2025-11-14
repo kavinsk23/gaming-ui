@@ -37,7 +37,7 @@ const Popup: React.FC<PopupProps> = ({
 }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="relative w-full max-w-md p-4 mx-4 rounded-lg shadow-lg">
+      <div className="relative w-full max-w-md p-4 mx-4 border-2 border-[#91919180] shadow-lg">
         <div className="absolute inset-0">
           <img
             src={popupbg}
