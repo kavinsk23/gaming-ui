@@ -3,17 +3,18 @@ import { RarityBanner } from "../../../rarity-banner/RarityBanner";
 import power from "../../../../../public/images/Power.svg";
 import separatorImage from "../../../../../public/images/SeparatorLine.svg";
 import RolledStat from "../../../rolled-stat/RolledStat";
-import modDetailsBg from "../../../../../public/images/Panel-BG.svg";
+import weaponDetailsBg from "../../../../../public/images/Panel-BG.svg";
 import target from "../../../../../public/images/target.svg";
+import StatProgressBar from "../../../stat-progress-bar/StatProgressBar";
 
-interface ModDetailsProps {}
+interface WeaponDetailsProps {}
 
-const ModDetails: React.FC<ModDetailsProps> = ({}) => {
+const WeaponDetails: React.FC<WeaponDetailsProps> = ({}) => {
   return (
-    <div className="relative flex flex-col w-full max-w-4xl border-2 border-[#1669AD]">
+    <div className="relative flex flex-col w-full max-w-4xl border-2 border-[#91919180]">
       {/* Background Image Layer */}
       <img
-        src={modDetailsBg}
+        src={weaponDetailsBg}
         alt="Background"
         className="absolute inset-0 object-cover w-full h-full -z-10"
       />
@@ -22,7 +23,7 @@ const ModDetails: React.FC<ModDetailsProps> = ({}) => {
       <div className="relative">
         {/* Rarity Banner with Title and Subtitle */}
         <div className="relative">
-          <RarityBanner variant="rare" text="" size="lg" className="mb-2" />
+          <RarityBanner variant="primal" text="" size="lg" className="mb-2" />
           {/* Title positioned on the banner */}
           <div className="absolute z-20 transform -translate-y-1/2 top-1/2 left-3">
             <h1 className="text-xl font-bold tracking-wide text-white uppercase">
@@ -37,7 +38,7 @@ const ModDetails: React.FC<ModDetailsProps> = ({}) => {
         {/* Right corner image */}
         {target && (
           <div className="absolute z-20 flex items-center w-8 h-full pb-3 my-auto transform -translate-y-1/2 top-1/2 right-6">
-            <img src={target} alt="Mod" className="object-contain" />
+            <img src={target} alt="Weapon" className="object-contain" />
           </div>
         )}
       </div>
@@ -77,6 +78,55 @@ const ModDetails: React.FC<ModDetailsProps> = ({}) => {
           </div>
         </div>
 
+        <div className="flex flex-col w-full gap-2">
+          <StatProgressBar
+            statName="STAT NAME"
+            value={527}
+            percentage={25}
+            segments={[{ percentage: 25, color: "white" }]}
+          />
+          <StatProgressBar
+            statName="STAT NAME"
+            value={527}
+            percentage={50}
+            segments={[
+              { percentage: 25, color: "white" },
+              { percentage: 25, color: "green" },
+            ]}
+          />
+          <StatProgressBar
+            statName="STAT NAME"
+            value={527}
+            percentage={75}
+            segments={[
+              { percentage: 25, color: "white" },
+              { percentage: 25, color: "green" },
+              { percentage: 25, color: "red" },
+            ]}
+          />
+          <StatProgressBar
+            statName="STAT NAME"
+            value={527}
+            percentage={100}
+            segments={[
+              { percentage: 25, color: "white" },
+              { percentage: 25, color: "green" },
+              { percentage: 25, color: "red" },
+              { percentage: 25, color: "gray" },
+            ]}
+          />
+        </div>
+        {/* Separator */}
+        {separatorImage && (
+          <div className="my-2">
+            <img
+              src={separatorImage}
+              alt="Separator"
+              className="object-contain h-2 w-[360px]"
+            />
+          </div>
+        )}
+
         {/* Rolled Stats List */}
         <div className="flex flex-col items-center w-64 gap-2">
           <RolledStat
@@ -110,4 +160,4 @@ const ModDetails: React.FC<ModDetailsProps> = ({}) => {
   );
 };
 
-export default ModDetails;
+export default WeaponDetails;

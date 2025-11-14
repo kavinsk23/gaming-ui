@@ -70,6 +70,7 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
       className={`
         grid
         grid-cols-[1fr_auto_auto]
+        ml-[-15px]
         items-center
         w-full
         h-8
