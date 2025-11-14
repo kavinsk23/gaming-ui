@@ -1,24 +1,21 @@
 import React from "react";
-import { RarityBanner } from "../../rarity-banner/RarityBanner";
+import { RarityBanner } from "../../../rarity-banner/RarityBanner";
+import power from "../../../../../public/images/Power.svg";
+import separatorImage from "../../../../../public/images/SeparatorLine.svg";
+import RolledStat from "../../../rolled-stat/RolledStat";
 
 interface ModDetailsProps {
   modImage?: string;
-  separatorImage?: string;
-  powerIcon?: string;
 }
 
-const ModDetails: React.FC<ModDetailsProps> = ({
-  modImage,
-  separatorImage,
-  powerIcon,
-}) => {
+const ModDetails: React.FC<ModDetailsProps> = ({ modImage }) => {
   return (
-    <div className="flex flex-col w-full max-w-4xl p-6 mx-auto bg-gray-900 rounded-lg">
+    <div className="flex flex-col w-full max-w-4xl border-2 border-[#1669AD]">
       {/* Header Section with Title, Subtitle, and Image */}
-      <div className="relative mb-6">
+      <div className="relative">
         {/* Rarity Banner with Title and Subtitle */}
         <div className="relative">
-          <RarityBanner variant="primal" text="" size="lg" className="mb-2" />
+          <RarityBanner variant="rare" text="" size="lg" className="mb-2" />
           {/* Title positioned on the banner */}
           <div className="absolute z-20 transform -translate-y-1/2 top-1/2 left-6">
             <h1 className="text-2xl font-bold tracking-wide text-white uppercase">
@@ -41,80 +38,69 @@ const ModDetails: React.FC<ModDetailsProps> = ({
           </div>
         )}
       </div>
+      <div className="m-4">
+        {/* Power Section */}
+        <div className="flex items-center justify-between 2">
+          <div className="flex items-center justify-center gap-3">
+            <div className="text-4xl font-bold text-white">255</div>
+            <div className="flex flex-col justify-center">
+              <img
+                src={power}
+                alt="Power Icon"
+                className="w-10 h-10 mx-auto text-white"
+              />
+              <div className="text-sm text-white opacity-50">POWER</div>
+            </div>
+          </div>
 
-      {/* Power Section */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center justify-center gap-3">
-          <div className="text-4xl font-bold text-white">255</div>
-          <div className="flex flex-col justify-center">
+          <div className="text-lg text-white uppercase">ENHANCED</div>
+        </div>
+
+        {/* Separator */}
+        {separatorImage && (
+          <div className="my-2">
             <img
-              src={powerIcon}
-              alt="Power Icon"
-              className="w-10 h-10 mx-auto text-white"
+              src={separatorImage}
+              alt="Separator"
+              className="object-contain h-2 w-[360px]"
             />
-            <div className="text-sm text-white opacity-50">POWER</div>
+          </div>
+        )}
+
+        {/* Number of Rolled Stats */}
+        <div className="mb-4">
+          <div className="text-lg text-white uppercase">
+            NUMBER OF ROLLED STATS (6)
           </div>
         </div>
 
-        <div className="text-lg font-bold text-green-400 uppercase">
-          ENHANCED
-        </div>
-      </div>
-
-      {/* Separator */}
-      {separatorImage && (
-        <div className="my-4">
-          <img
-            src={separatorImage}
-            alt="Separator"
-            className="object-contain w-full h-2"
+        {/* Rolled Stats List */}
+        <div className="flex flex-col items-center w-64 gap-2">
+          <RolledStat
+            statName="ROLLED STAT NAME"
+            percentage={27}
+            variant="positive"
           />
-        </div>
-      )}
-
-      {/* Number of Rolled Stats */}
-      <div className="mb-4">
-        <div className="text-lg font-bold text-white uppercase">
-          NUMBER OF ROLLED STATS (6)
-        </div>
-      </div>
-
-      {/* Rolled Stats List */}
-      <div className="space-y-2">
-        {/* Stat 1 */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-white uppercase">ROLLED STAT NAME</span>
-          <span className="text-sm font-bold text-green-400">+27%</span>
-        </div>
-
-        {/* Stat 2 */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-white uppercase">ROLLED STAT NAME</span>
-          <span className="text-sm font-bold text-red-400">-60%</span>
-        </div>
-
-        {/* Stat 3 */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-white uppercase">ROLLED STAT NAME</span>
-          <span className="text-sm font-bold text-green-400">+27%</span>
-        </div>
-
-        {/* Stat 4 */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-white uppercase">ROLLED STAT NAME</span>
-          <span className="text-sm font-bold text-red-400">-60%</span>
-        </div>
-
-        {/* Stat 5 */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-white uppercase">ROLLED STAT NAME</span>
-          <span className="text-sm font-bold text-green-400">+27%</span>
-        </div>
-
-        {/* Stat 6 */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-white uppercase">ROLLED STAT NAME</span>
-          <span className="text-sm font-bold text-red-400">-60%</span>
+          <RolledStat
+            statName="ROLLED STAT NAME"
+            percentage={27}
+            variant="negative"
+          />
+          <RolledStat
+            statName="ROLLED STAT NAME"
+            percentage={27}
+            variant="positive"
+          />
+          <RolledStat
+            statName="ROLLED STAT NAME"
+            percentage={27}
+            variant="negative"
+          />
+          <RolledStat
+            statName="ROLLED STAT NAME"
+            percentage={27}
+            variant="negative"
+          />
         </div>
       </div>
     </div>
