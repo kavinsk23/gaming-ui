@@ -3,22 +3,29 @@ import { RarityBanner } from "../../../rarity-banner/RarityBanner";
 import power from "../../../../../public/images/Power.svg";
 import separatorImage from "../../../../../public/images/SeparatorLine.svg";
 import RolledStat from "../../../rolled-stat/RolledStat";
+import modDetailsBg from "../../../../../public/images/Panel-BG.svg";
+import target from "../../../../../public/images/target.svg";
 
-interface ModDetailsProps {
-  modImage?: string;
-}
+interface ModDetailsProps {}
 
-const ModDetails: React.FC<ModDetailsProps> = ({ modImage }) => {
+const ModDetails: React.FC<ModDetailsProps> = ({}) => {
   return (
-    <div className="flex flex-col w-full max-w-4xl border-2 border-[#1669AD]">
+    <div className="relative flex flex-col w-full max-w-4xl border-2 border-[#1669AD]">
+      {/* Background Image Layer */}
+      <img
+        src={modDetailsBg}
+        alt="Background"
+        className="absolute inset-0 object-cover w-full h-full -z-10"
+      />
+
       {/* Header Section with Title, Subtitle, and Image */}
       <div className="relative">
         {/* Rarity Banner with Title and Subtitle */}
         <div className="relative">
           <RarityBanner variant="rare" text="" size="lg" className="mb-2" />
           {/* Title positioned on the banner */}
-          <div className="absolute z-20 transform -translate-y-1/2 top-1/2 left-6">
-            <h1 className="text-2xl font-bold tracking-wide text-white uppercase">
+          <div className="absolute z-20 transform -translate-y-1/2 top-1/2 left-3">
+            <h1 className="text-xl font-bold tracking-wide text-white uppercase">
               LONG MOD NAME IV
             </h1>
             <p className="text-sm tracking-wider text-white uppercase opacity-80">
@@ -28,17 +35,13 @@ const ModDetails: React.FC<ModDetailsProps> = ({ modImage }) => {
         </div>
 
         {/* Right corner image */}
-        {modImage && (
-          <div className="absolute z-20 transform -translate-y-1/2 top-1/2 right-6">
-            <img
-              src={modImage}
-              alt="Mod"
-              className="object-contain w-24 h-24"
-            />
+        {target && (
+          <div className="absolute z-20 flex items-center w-8 h-full pb-3 my-auto transform -translate-y-1/2 top-1/2 right-6">
+            <img src={target} alt="Mod" className="object-contain" />
           </div>
         )}
       </div>
-      <div className="m-4">
+      <div className="m-4 mt-0">
         {/* Power Section */}
         <div className="flex items-center justify-between 2">
           <div className="flex items-center justify-center gap-3">
