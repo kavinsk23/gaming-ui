@@ -78,6 +78,7 @@ export const Banner: React.FC<BannerProps> = ({
         opacity-50
         ${sizeClasses.text}
       `}
+        style={{ fontFamily: "'Gear Trial', sans-serif" }}
       >
         {children}
       </h2>

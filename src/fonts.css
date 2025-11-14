@@ -1,0 +1,222 @@
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-Bold.woff2") format("woff2"),
+    url("./fonts/GearTrial-Bold.woff") format("woff"),
+    url("./fonts/GearTrial-Bold.ttf") format("truetype"),
+    url("./fonts/GearTrial-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-BoldBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrial-BoldBackslant.woff") format("woff"),
+    url("./fonts/GearTrial-BoldBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrial-BoldBackslant.otf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-Light.woff2") format("woff2"),
+    url("./fonts/GearTrial-Light.woff") format("woff"),
+    url("./fonts/GearTrial-Light.ttf") format("truetype"),
+    url("./fonts/GearTrial-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-LightBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrial-LightBackslant.woff") format("woff"),
+    url("./fonts/GearTrial-LightBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrial-LightBackslant.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-Medium.woff2") format("woff2"),
+    url("./fonts/GearTrial-Medium.woff") format("woff"),
+    url("./fonts/GearTrial-Medium.ttf") format("truetype"),
+    url("./fonts/GearTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-MediumBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrial-MediumBackslant.woff") format("woff"),
+    url("./fonts/GearTrial-MediumBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrial-MediumBackslant.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-Regular.woff2") format("woff2"),
+    url("./fonts/GearTrial-Regular.woff") format("woff"),
+    url("./fonts/GearTrial-Regular.ttf") format("truetype"),
+    url("./fonts/GearTrial-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-RegularBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrial-RegularBackslant.woff") format("woff"),
+    url("./fonts/GearTrial-RegularBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrial-RegularBackslant.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+/* ... (previous @font-face rules) ... */
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-Ultra.woff2") format("woff2"),
+    url("./fonts/GearTrial-Ultra.woff") format("woff"),
+    url("./fonts/GearTrial-Ultra.ttf") format("truetype"),
+    url("./fonts/GearTrial-Ultra.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial";
+  src: url("./fonts/GearTrial-UltraSlant.woff2") format("woff2"),
+    url("./fonts/GearTrial-UltraSlant.woff") format("woff"),
+    url("./fonts/GearTrial-UltraSlant.ttf") format("truetype"),
+    url("./fonts/GearTrial-UltraSlant.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gear Trial Wide";
+  src: url("./fonts/GearTrialWide-Bold.woff2") format("woff2"),
+    url("./fonts/GearTrialWide-Bold.woff") format("woff"),
+    url("./fonts/GearTrialWide-Bold.ttf") format("truetype"),
+    url("./fonts/GearTrialWide-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial Wide";
+  src: url("./fonts/GearTrialWide-BoldBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrialWide-BoldBackslant.woff") format("woff"),
+    url("./fonts/GearTrialWide-BoldBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrialWide-BoldBackslant.otf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gear Trial Wide";
+  src: url("./fonts/GearTrialWide-Light.woff2") format("woff2"),
+    url("./fonts/GearTrialWide-Light.woff") format("woff"),
+    url("./fonts/GearTrialWide-Light.ttf") format("truetype"),
+    url("./fonts/GearTrialWide-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial Wide";
+  src: url("./fonts/GearTrialWide-LightBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrialWide-LightBackslant.woff") format("woff"),
+    url("./fonts/GearTrialWide-LightBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrialWide-LightBackslant.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gear Trial Wide";
+  src: url("./fonts/GearTrialWide-Medium.woff2") format("woff2"),
+    url("./fonts/GearTrialWide-Medium.woff") format("woff"),
+    url("./fonts/GearTrialWide-Medium.ttf") format("truetype"),
+    url("./fonts/GearTrialWide-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial Wide";
+  src: url("./fonts/GearTrialWide-MediumBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrialWide-MediumBackslant.woff") format("woff"),
+    url("./fonts/GearTrialWide-MediumBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrialWide-MediumBackslant.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gear Trial Wide";
+  src: url("./fonts/GearTrialWide-Regular.woff2") format("woff2"),
+    url("./fonts/GearTrialWide-Regular.woff") format("woff"),
+    url("./fonts/GearTrialWide-Regular.ttf") format("truetype"),
+    url("./fonts/GearTrialWide-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial Wide";
+  src: url("./fonts/GearTrialWide-RegularBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrialWide-RegularBackslant.woff") format("woff"),
+    url("./fonts/GearTrialWide-RegularBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrialWide-RegularBackslant.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* ... (remaining @font-face rules for Gear Trial Wide variations) ... */
+
+@font-face {
+  font-family: "Gear Trial Narrow";
+  src: url("./fonts/GearTrialNarrow-Black.woff2") format("woff2"),
+    url("./fonts/GearTrialNarrow-Black.woff") format("woff"),
+    url("./fonts/GearTrialNarrow-Black.ttf") format("truetype"),
+    url("./fonts/GearTrialNarrow-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial Narrow";
+  src: url("./fonts/GearTrialNarrow-BlackBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrialNarrow-BlackBackslant.woff") format("woff"),
+    url("./fonts/GearTrialNarrow-BlackBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrialNarrow-BlackBackslant.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gear Trial Narrow";
+  src: url("./fonts/GearTrialNarrow-Bold.woff2") format("woff2"),
+    url("./fonts/GearTrialNarrow-Bold.woff") format("woff"),
+    url("./fonts/GearTrialNarrow-Bold.ttf") format("truetype"),
+    url("./fonts/GearTrialNarrow-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gear Trial Narrow";
+  src: url("./fonts/GearTrialNarrow-BoldBackslant.woff2") format("woff2"),
+    url("./fonts/GearTrialNarrow-BoldBackslant.woff") format("woff"),
+    url("./fonts/GearTrialNarrow-BoldBackslant.ttf") format("truetype"),
+    url("./fonts/GearTrialNarrow-BoldBackslant.otf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
