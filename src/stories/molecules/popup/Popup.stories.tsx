@@ -10,12 +10,8 @@ const Template = (args) => <Popup {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  onCancel: () => {
-    console.log("Cancel button clicked");
-  },
-  onReplace: () => {
-    console.log("Replace button clicked");
-  },
+  onCancel: () => console.log("Cancel button clicked"),
+  onReplace: () => console.log("Replace button clicked"),
 };
 
 export const Warning = Template.bind({});
@@ -23,13 +19,24 @@ Warning.args = {
   variant: "warning",
   title: "WARNING: THIS ACTION CANNOT BE UNDONE!",
   description:
-    "It will be permanently lost. Lorem ipsum dolor an extra explanation if needed - are you super duper sure? Filler text that is very long and can take up multiple lines in this panel.",
+    "It will be permanently lost. Lorem ipsum dolor an extra explanation if needed.",
+  onCancel: () => console.log("Cancel button clicked"),
+  onReplace: () => console.log("Replace button clicked"),
+};
+
+export const Enhance = Template.bind({});
+Enhance.args = {
+  variant: "enhance",
+  title: "ARE YOU SURE YOU WANT TO ENHANCE THIS ITEM?",
+  description:
+    "Lorem ipsum dolor an extra explanation if needed - this is a description. Resources needed:",
   cancelText: "CANCEL",
-  replaceText: "REPLACE",
-  onCancel: () => {
-    console.log("Cancel button clicked");
+  replaceText: "ENHANCE",
+  resources: {
+    resource1: 5,
+    resource2: 12,
+    resource3: 32,
   },
-  onReplace: () => {
-    console.log("Replace button clicked");
-  },
+  onCancel: () => console.log("Cancel button clicked"),
+  onReplace: () => console.log("Enhance button clicked"),
 };

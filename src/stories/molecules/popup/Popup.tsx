@@ -2,15 +2,24 @@ import React from "react";
 import ButtonBasic from "../../button-basic/ButtonBasic";
 import popupbg from "../../../../public/images/Panel-BG.svg";
 import separatorImg from "../../../../public/images/SeparatorLine.svg";
+import icon1 from "../../../../public/icons/image-40.svg";
+import icon2 from "../../../../public/icons/image-41.svg";
+import icon3 from "../../../../public/icons/image-42.svg";
 
 interface PopupProps {
   onCancel: () => void;
   onReplace: () => void;
-  variant?: "default" | "warning";
+  variant?: "default" | "warning" | "enhance";
   title?: string;
   description?: string;
   cancelText?: string;
   replaceText?: string;
+  /** Resource costs for enhance variant */
+  resources?: {
+    resource1?: number;
+    resource2?: number;
+    resource3?: number;
+  };
 }
 
 const Popup: React.FC<PopupProps> = ({
@@ -21,6 +30,7 @@ const Popup: React.FC<PopupProps> = ({
   description,
   cancelText = "CANCEL",
   replaceText = "REPLACE",
+  resources = { resource1: +5, resource2: +12, resource3: +32 },
 }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -42,7 +52,7 @@ const Popup: React.FC<PopupProps> = ({
           </h2>
 
           {/* Separator image */}
-          {description && (
+          {(description || variant === "enhance") && (
             <img src={separatorImg} alt="Separator" className="w-full my-3" />
           )}
 
@@ -50,6 +60,35 @@ const Popup: React.FC<PopupProps> = ({
             <p className="text-sm text-center text-white opacity-80">
               {description}
             </p>
+          )}
+
+          {/* Resource costs for enhance variant */}
+          {variant === "enhance" && (
+            <div className="flex justify-center my-4 space-x-3">
+              {/* Resource 1 */}
+              <div className="relative flex items-center justify-center w-16 h-8">
+                <img src={icon1} alt="Resource 1" className="w-4 h-4 mr-1" />
+                <span className="text-sm font-bold text-white">
+                  {resources.resource1}
+                </span>
+              </div>
+
+              {/* Resource 2 */}
+              <div className="relative flex items-center justify-center w-16 h-8">
+                <img src={icon2} alt="Resource 2" className="w-4 h-4 mr-1" />
+                <span className="text-sm font-bold text-white">
+                  {resources.resource2}
+                </span>
+              </div>
+
+              {/* Resource 3 */}
+              <div className="relative flex items-center justify-center w-16 h-8 ">
+                <img src={icon3} alt="Resource 3" className="w-4 h-4 mr-1" />
+                <span className="text-sm font-bold text-white">
+                  {resources.resource3}
+                </span>
+              </div>
+            </div>
           )}
 
           <div className="flex justify-center mt-4 space-x-3">
