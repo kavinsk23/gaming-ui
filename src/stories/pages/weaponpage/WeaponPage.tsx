@@ -13,6 +13,7 @@ import power from "../../../../public/images/Power.svg";
 import RolledStatItem from "../../rolled-stat-item/RolledStatItem";
 import StatItem from "../../stat-item/StatItem";
 import Popup from "../../molecules/popup/Popup";
+import Header from "../../molecules/header/Header";
 
 export interface WeaponPageProps {
   /** Weapon name */
@@ -70,6 +71,12 @@ export const WeaponPage: React.FC<WeaponPageProps> = ({
         overlayOpacity={60}
         className={className}
       >
+        {/* <div>
+          <Header
+            resources={{ resource1: 150, resource2: 75, resource3: 300 }}
+            onBackClick={() => console.log("Back clicked")}
+          />
+        </div> */}
         {/* Main Content Layout */}
         <div className="relative min-h-screen p-8">
           {/* Blur Layer - Applied when popup is visible */}

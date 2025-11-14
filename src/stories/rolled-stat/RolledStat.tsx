@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Rolled Stat component - displays stat name with percentage and colored indicator
@@ -9,9 +9,9 @@ export interface RolledStatProps {
   /** Percentage value */
   percentage: number;
   /** Variant type */
-  variant?: 'positive' | 'negative';
+  variant?: "positive" | "negative";
   /** Size variant */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** Custom CSS class name */
   className?: string;
   /** Optional click handler */
@@ -23,22 +23,22 @@ export interface RolledStatProps {
  */
 const SIZE_CONFIG = {
   sm: {
-    container: 'h-8 px-3',
-    text: 'text-sm',
-    circle: 'w-3 h-3',
-    percentage: 'text-sm'
+    container: "h-8 px-3",
+    text: "text-sm",
+    circle: "w-3 h-3",
+    percentage: "text-sm",
   },
   md: {
-    container: 'h-8 px-4',
-    text: 'text-base',
-    circle: 'w-6 h-6',
-    percentage: 'text-base'
+    container: "h-5 px-2 flex justify-center",
+    text: "text-base",
+    circle: "w-4 h-4",
+    percentage: "text-base",
   },
   lg: {
-    container: 'h-12 px-5',
-    text: 'text-lg',
-    circle: 'w-5 h-5',
-    percentage: 'text-lg'
+    container: "h-12 px-5",
+    text: "text-lg",
+    circle: "w-5 h-5",
+    percentage: "text-lg",
   },
 } as const;
 
@@ -47,14 +47,16 @@ const SIZE_CONFIG = {
  */
 const VARIANT_CONFIG = {
   positive: {
-    gradient: 'linear-gradient(90deg, #8DC740 0%, rgba(141, 199, 64, 0.8) 0%, rgba(141, 199, 64, 0.3) 80%, rgba(141, 199, 64, 0) 100%)',
-    circleColor: '#89C53A',
-    textColor: '#89C53A'
+    gradient:
+      "linear-gradient(90deg, #8DC740 0%, rgba(141, 199, 64, 0.8) 0%, rgba(141, 199, 64, 0.3) 50%, rgba(141, 199, 64, 0) 80%)",
+    circleColor: "#89C53A",
+    textColor: "#89C53A",
   },
   negative: {
-    gradient: 'linear-gradient(90deg, #DB6660 0%, rgba(219, 102, 96, 0.8) 0%, rgba(219, 102, 96, 0.3) 80%, rgba(219, 102, 96, 0) 100%)',
-    circleColor: '#DB6660',
-    textColor: '#DB6660'
+    gradient:
+      "linear-gradient(90deg, #DB6660 0%, rgba(219, 102, 96, 0.8) 0%, rgba(219, 102, 96, 0.3) 50%, rgba(219, 102, 96, 0) 80%)",
+    circleColor: "#DB6660",
+    textColor: "#DB6660",
   },
 } as const;
 
@@ -64,9 +66,9 @@ const VARIANT_CONFIG = {
 export const RolledStat: React.FC<RolledStatProps> = ({
   statName,
   percentage,
-  variant = 'positive',
-  size = 'md',
-  className = '',
+  variant = "positive",
+  size = "md",
+  className = "",
   onClick,
 }) => {
   const sizeClasses = SIZE_CONFIG[size];
@@ -76,12 +78,13 @@ export const RolledStat: React.FC<RolledStatProps> = ({
     <div className="flex items-center w-full">
       {/* Label text on left side */}
       <div className="flex-1 pr-4">
-        <span className={`
-          font-medium
+        <span
+          className={`
           text-white
           ${sizeClasses.text}
           whitespace-nowrap
-        `}>
+        `}
+        >
           {statName}
         </span>
       </div>
@@ -94,7 +97,7 @@ export const RolledStat: React.FC<RolledStatProps> = ({
           items-center
           justify-end
           ${sizeClasses.container}
-          ${onClick ? 'cursor-pointer hover:opacity-90' : 'cursor-default'}
+          ${onClick ? "cursor-pointer hover:opacity-90" : "cursor-default"}
           transition-opacity
           duration-200
           min-w-[120px]
@@ -112,7 +115,7 @@ export const RolledStat: React.FC<RolledStatProps> = ({
         />
 
         {/* Percentage text */}
-        <span 
+        <span
           className={`
             font-medium
             ${sizeClasses.percentage}
@@ -120,7 +123,8 @@ export const RolledStat: React.FC<RolledStatProps> = ({
           `}
           style={{ color: variantClasses.textColor }}
         >
-          ({percentage > 0 ? '+' : ''}{percentage}%)
+          ({percentage > 0 ? "+" : ""}
+          {percentage}%)
         </span>
       </div>
     </div>
