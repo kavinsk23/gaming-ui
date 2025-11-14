@@ -110,7 +110,7 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
       {/* Middle section: Progress bar */}
       <div className="flex items-center justify-center">
         {/* Multi-color progress bar container */}
-        <div className="w-[200px] h-2 bg-[#414141] overflow-hidden mx-3">
+        <div className="w-[150px] h-2 bg-[#414141] overflow-hidden mx-3">
           <div className="flex w-full h-full">
             {effectiveSegments.map((segment, index) => (
               <div

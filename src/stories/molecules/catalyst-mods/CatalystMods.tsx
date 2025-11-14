@@ -298,7 +298,7 @@ export const CatalystMods: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full p-6 w-[580px] max-w-[580px] bg-gray-900">
+    <div className="flex flex-col p-6 w-[580px] max-w-[580px] bg-gray-900">
       {/* Header Section with Title and Search */}
       <div className="flex-shrink-0 mb-6">
         {/* Title */}
@@ -314,7 +314,7 @@ export const CatalystMods: React.FC = () => {
             <Tile
               key={tile.id}
               variant={tile.variant}
-              size="lg" // All tiles same size
+              size="sm"
               onClick={() => handleTileClick(tile.id)}
               hoverEffect={true}
               borderColor={tile.borderColor}
