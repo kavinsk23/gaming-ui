@@ -74,7 +74,7 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
         items-center
         w-full
         h-8
-        px-4
+        pl-4
         ${onClick ? "cursor-pointer" : "cursor-default"}
         transition-opacity
         duration-200
@@ -101,6 +101,7 @@ export const StatProgressBar: React.FC<StatProgressBarProps> = ({
           text-white
           text-base
           whitespace-nowrap
+          ml-auto
         `}
         >
           {value}
